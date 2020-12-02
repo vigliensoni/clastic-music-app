@@ -9,6 +9,23 @@ video.crossOrigin = "anonymous"
 video.loop = true
 video.muted = false
 
+// Video muting
+let muted = false
+
+function mute(){
+  if ( muted == false ) {
+    console.log('I will mute it')
+    muted = true
+    video.muted = muted
+  }  
+  else {
+    console.log('I will unmute it')
+    muted = false
+    video.muted = muted
+  }
+}
+
+
 // Audio
 const context = new ( AudioContext || webkitAudioContext )();
 const analyser = context.createAnalyser();
