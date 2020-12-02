@@ -27,24 +27,33 @@ function mute(){
 
 
 // Audio
-const context = new ( AudioContext || webkitAudioContext )();
-const analyser = context.createAnalyser();
-const source = context.createMediaElementSource(video);
-
+let context = new ( AudioContext || webkitAudioContext )();
+let analyser = context.createAnalyser();
+let source = context.createMediaElementSource(video);
 source.connect(analyser);
 analyser.connect(context.destination);
-
 analyser.fftSize = 32;
-const bufferLength = analyser.frequencyBinCount;
-const dataArray = new Uint8Array(bufferLength);
+let bufferLength = analyser.frequencyBinCount;
+let fft = new Uint8Array(bufferLength);    
 
+// Resume audio context after user gesture
+function audio() {
+    context.resume();
+    document.getElementById('audio').style.display = 'none';
+}
 
+// fft
 function draw() {
     drawVisual = requestAnimationFrame(draw);
-    analyser.getByteFrequencyData(dataArray);
+    analyser.getByteFrequencyData(fft);
 };
 
+// Play
+// const playButton = document.getElementById('audio');
+// playButton.addEventListener('click', () => playButton.style.display = "none" )
 
+
+// Scenes
 function but1() {
 
     video.src = "./bd2-test.mp4"
@@ -53,12 +62,12 @@ function but1() {
     src(s0)
     .rotate (.1,() => Math.sin(time * 0.00008))
     .scale(1.4)
-    .scale(  () => dataArray[2]/256 )
+    .scale(  () => fft[2]/256 )
     .diff(o1,0.3)
     .modulate(s0,.025)
     .blend(o0)
     .modulate(o2,.03)
-    .saturate( ()  => dataArray[5]/256 * 4 )
+    .saturate( ()  => fft[5]/256 * 4 )
     .out(o0)
 
     render(o0) 
