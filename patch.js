@@ -3,7 +3,7 @@ const hydra = new Hydra()
 
 // Video stuff
 const video = document.createElement("video")
-video.id="allende"
+video.id="video"
 video.autoplay = true
 video.crossOrigin = "anonymous"
 video.loop = true
@@ -27,7 +27,7 @@ function mute(){
 
 
 // Audio
-let context = new ( AudioContext || webkitAudioContext )();
+const context = new ( window.AudioContext || window.webkitAudioContext  )();
 let analyser = context.createAnalyser();
 let source = context.createMediaElementSource(video);
 source.connect(analyser);
@@ -37,10 +37,10 @@ let bufferLength = analyser.frequencyBinCount;
 let fft = new Uint8Array(bufferLength);    
 
 // Resume audio context after user gesture
-function audio() {
-    context.resume();
-    document.getElementById('audio').style.display = 'none';
-}
+// function audio() {
+//     context.resume();
+//     document.getElementById('audio').style.display = 'none';
+// }
 
 // fft
 function draw() {
