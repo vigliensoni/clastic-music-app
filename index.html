@@ -1,28 +1,62 @@
 <!DOCTYPE html>
 <html class="w-100 h-100 mw-100">
   <head>
-    <title>mass</title>
+    <title>clastic music</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta charset="utf-8">
-    
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="#">
   </head>
-  <body class="w-100 h-100 mw-100 avenir bg-dark-gray near-white" style="background-color:black;">
+
+  <body class="w-100 h-100 mw-100 avenir bg-dark-gray near-white" style="background-color:black; color:blanchedalmond">
+    
+    
+    <!-- MODAL -->
+     <!-- Trigger/Open The Modal -->
+    <!-- <button id="myBtn">Open Modal</button> -->
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p class="info">Best enjoyed with headphones on desktop.</p>
+        <p class="info">Press play to start.</p>
+        <p class="info" id="audio">Play</p>
+      </div>
+    </div> 
+
     <center>
-      <div>
-        <!-- <button onclick="audio()" id="audio">play</button> -->
-        <button onclick="but1()" id="but1">e01</button>
-        <button onclick="but2()" id="but2">bd8</button>
-        <button onclick="but3()" id="but3">bd7</button>
-        <button onclick="but4()" id="but4">e02</button>
-        <button onclick="but5()" id="but5">clastic</button>
-        <button onclick="but6()" id="but6">fall in sync</button>
-        <button onclick="but7()" id="but7">telematic</button>
-        <button onclick="but8()" id="but8">bd1</button>
-        <button onclick="but9()" id="but9">bd2</button>
-        <button onclick="mute()" id="mute">mute</button>
+      <div class="tableRow">
+        <div class="tableColumn" onclick="but1()" id="but1">Siltsone</div>
+        <div class="tableColumn" onclick="but2()" id="but2">Breccia</div>
+        <div class="tableColumn" onclick="but3()" id="but3">Ooze</div>
+        <div class="tableColumn" onclick="but4()" id="but4">Claystone</div>
+        <div class="tableColumn" onclick="but5()" id="but5">Clastic</div>
+        <div class="tableColumn" onclick="but6()" id="but6">Fall in Sync</div>
+        <div class="tableColumn" onclick="but7()" id="but7">Telematic Awakening</div>
+        <div class="tableColumn" onclick="but8()" id="but8">Sandstone</div>
+        <div class="tableColumn" onclick="but9()" id="but9">Shale</div>
+        <div class="tableColumn" onclick="mute()" id="mute">Mute</div>
       </div>
     </center>
+    
+
+    <p class="info-footer">
+
+      Clastic music is an album published as a digital art project. 
+      Born from his composition work of the past year, 
+      it traces Vigliensoni’s rhythmic explorations and research in unfamiliar terrain. 
+      An interactive webpage is set to be explored by curious and relaxed listeners.
+      
+      Composed and produced by Vigliensoni
+      Art Direction and Design by Antonia Hernández
+      Hydra Visualizations by Eduardo Pérez
+      Mastered by Rupert Clervaux
+    </p>
+
     <script src='./hydra-synth.js'></script>
+    <script src='./info.js'></script>
     <script src='./patch.js'></script>
+
   </body>
 </html>
