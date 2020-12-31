@@ -14,7 +14,6 @@ video.muted = false;
 
 let analyser; 
 let source;
-let bufferLength;
 let dataArray;
 let loFreq;
 let lomidFreq;
@@ -35,10 +34,7 @@ playButton.addEventListener('click', () => {
     analyser.connect(context.destination);
     
     analyser.fftSize = 32;
-    bufferLength = analyser.frequencyBinCount;
-    dataArray = new Uint8Array(bufferLength);
-    // playButton.style.display = "none";
-    playButton.innerText = "Active!";
+    dataArray = new Uint8Array(analyser.frequencyBinCount);
   
   }
 );
@@ -61,18 +57,24 @@ function draw() {
 
 
 // Video muting
+let muteButton = document.getElementById('mute');
 let muted = false;
+
+muteButton.addEventListener('click', () => mute() );
+
 
 function mute(){
   if ( muted == false ) {
     console.log('I will mute it');
     muted = true;
     video.muted = muted;
+    muteButton.innerText="Unmute";
   }  
   else {
     console.log('I will unmute it');
     muted = false;
     video.muted = muted;
+    muteButton.innerText="Mute";
   }
 };
 
@@ -187,7 +189,7 @@ function but2() {
   console.log('2 - bd08 - flesh')
 
   // video.src = "./videos/bd08-small.mp4"
-  video.src = "./videos/2-BD08-crf23.mp4"
+  video.src = "./videos/2-BD08.mp4"
 
   video.play().then( () => s0.init({src:video, dynamic:true}) )
 

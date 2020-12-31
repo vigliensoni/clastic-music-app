@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="w-100 h-100 mw-100">
   <head>
-    <title>clastic music</title>
+    <title>vigliensoni | clastic music</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
@@ -18,12 +18,15 @@
     <div id="myModal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
-        <span class="close">&times;</span>
+        <!-- <span class="close">&times;</span> -->
         <p class="info">Best enjoyed with headphones on desktop.</p>
-        <p class="info">Press play to start.</p>
+        <p class="info">Works best in Firefox and Chrome</p>
+        <p class="info">Press play to start the audio engine and choose a track.</p>
         <p class="info" id="audio">Play</p>
       </div>
     </div> 
+
+    <div id="hydra-canvas"></div>
 
     <center>
       <div class="tableRow">
@@ -36,25 +39,24 @@
         <div class="tableColumn" onclick="but7()" id="but7">Telematic Awakening</div>
         <div class="tableColumn" onclick="but8()" id="but8">Sandstone</div>
         <div class="tableColumn" onclick="but9()" id="but9">Shale</div>
-        <div class="tableColumn" onclick="mute()" id="mute">Mute</div>
+        <div class="tableColumn" id="mute">Mute</div>
       </div>
     </center>
-    
-
-    <p class="info-footer">
-
-      Clastic music is an album published as a digital art project. 
-      Born from his composition work of the past year, 
-      it traces Vigliensoni’s rhythmic explorations and research in unfamiliar terrain. 
-      An interactive webpage is set to be explored by curious and relaxed listeners.
-      
-      Composed and produced by Vigliensoni
-      Art Direction and Design by Antonia Hernández
-      Hydra Visualizations by Eduardo Pérez
-      Mastered by Rupert Clervaux
-    </p>
 
     <script src='./hydra-synth.js'></script>
+
+    <div>
+      <!-- Clastic music is an album published as a digital art project. 
+      Born from his composition work of the past year, 
+      it traces Vigliensoni’s rhythmic explorations and research in unfamiliar terrain. 
+      An interactive webpage is set to be explored by curious and relaxed listeners. -->
+      <p class="tableRow">Composed and produced by Vigliensoni</p>
+      <p class="tableRow">Hydra visualizations by Eduardo Pérez</p>
+      <p class="tableRow">Art direction and design by Antonia Hernández</p>
+      <p class="tableRow">Mastered by Rupert Clervaux</p>
+    </div>
+
+
     <script src='./info.js'></script>
     <script src='./patch.js'></script>
 

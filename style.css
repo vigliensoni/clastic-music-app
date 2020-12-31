@@ -4,6 +4,8 @@
     width: 100%;
     table-layout: fixed;
     border-spacing: 10px;
+    text-align: center;
+    font-family:Copperplate;
 }
 .tableColumn
 {
@@ -58,3 +60,13 @@
     text-decoration: none;
     cursor: pointer;
   } 
+
+
+  /* CANVAS */
+
+  canvas {
+    padding: 0;
+    margin: auto;
+    display: block;
+    width: 800px;
+}
