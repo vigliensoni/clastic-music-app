@@ -193,8 +193,8 @@
         this.canvas = document.createElement('canvas')
         this.canvas.width = this.width
         this.canvas.height = this.height
-        this.canvas.style.width = '97%'
-        this.canvas.style.height = '97%'
+        this.canvas.style.width = '100%'
+        this.canvas.style.height = '100%'
         this.canvas.style.imageRendering = 'pixelated'
     
         document.getElementById("hydra-canvas").appendChild(this.canvas)
