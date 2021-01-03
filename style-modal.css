@@ -7,7 +7,7 @@
 .modal.right .modal-dialog {
     position: fixed;
     margin: auto;
-    width: 320px;
+    width: 380px;
     height: 50%;
     -webkit-transform: translate3d(0%, 0, 0);
         -ms-transform: translate3d(0%, 0, 0);
@@ -30,7 +30,7 @@
 
 /*Left*/
 .modal.left.fade .modal-dialog{
-    left: -320px;
+    left: -380px;
     -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
        -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
          -o-transition: opacity 0.3s linear, left 0.3s ease-out;
@@ -43,7 +43,7 @@
     
 /*Right*/
 .modal.right.fade .modal-dialog {
-    right: -320px;
+    right: -380px;
     -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
        -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
          -o-transition: opacity 0.3s linear, right 0.3s ease-out;
@@ -66,11 +66,7 @@
 }
 
 
-body {
-background-color: #000000;
-color:blanchedalmond;
-font-family: Copperplate;
-}
+
 
 
 .container {
@@ -119,18 +115,3 @@ outline: 0;
 
 
 
-.demo-footer {
-position: fixed;
-bottom: 0;
-width: 100%;
-padding: 15px;
-background-color: #212121;
-text-align: center;
-}
-
-.demo-footer > a {
-text-decoration: none;
-font-weight: bold;
-font-size: 16px;
-color: #fff;
-}
