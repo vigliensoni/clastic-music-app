@@ -26,6 +26,7 @@ let hiFreq;
 const playButton = document.getElementById('audio');
 playButton.addEventListener('click', () => {
 
+  toggleFullScreen();
     const context = new ( AudioContext || webkitAudioContext )();
     analyser = context.createAnalyser();
     source = context.createMediaElementSource(video);
@@ -40,10 +41,24 @@ playButton.addEventListener('click', () => {
 );
 
 
-// let canvas = document.getElementsByTagName("canvas")[0]
-// console.log(canvas)
 
+// FULL SCREEN
+document.addEventListener("keypress", function(e) {
+  if (e.keyCode === 13) {
+    toggleFullScreen();
+  }
+}, false);
 
+function toggleFullScreen() {
+  if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+      // document.documentElement.webkitRequestFullscreen(); //SAFARI
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
+  }
+}
 
 
 function draw() {
@@ -54,10 +69,7 @@ function draw() {
     midFreq = dataArray[2]/255;
     himidFreq = dataArray[3]/255;
     hiFreq = dataArray[4]/255;
-    // console.log('X: ', mouse.x, ' Y: ', mouse.y)
-    // BUT 5
-    console.log("mX: " + mouse.x +  " | " + norm(mouse.x, 0, window.innerWidth))
-    // console.log(window.innerWidth)
+    // console.log("mX: " + mouse.x +  " | " + norm(mouse.x, 0, window.innerWidth))
 };
 
 
@@ -238,66 +250,44 @@ draw();
 function but4() {
   console.log('4 - e02 - mass')
 
-  video.src = "./videos/4-E02-crf23.mp4"
+  video.src = "./videos/4-E02-crf22.mp4"
   video.play().then( () => s0.init({src:video, dynamic:true}) )
 
   src(s0)
-  // .rotate (.1,() => Math.sin(time * 0.00008))
   .scale(1.4)
-  .scale(  () => dataArray[3]/255*1.2+.25 )
+  .scale(  () => dataArray[3]/255*1+.2 )
   .add(o1,0.1)
   .modulate(s0,.025)
   .blend(o0)
   .modulate(o2,.03)
   .modulate(o1, .5)
-  // .modulate(o1, .03)
+
   .out(o0)
+
+
+
+  src(s0).mult(osc([950,-950].smooth().fast(.03),0.013).contrast(14).brightness(-6))
+  .modulate(o2,.5)
+  .out(o1)
+
+
 
   src(s0)
 
-
-  shape(()=>Math.sin(time)+1*3, .5,.01)
-  .repeat(5,3, ()=>dataArray[0]/255*1.5, ()=>dataArray[1]/255*1.5)
-  .scrollY(.5,0.1)
+  shape(()=>Math.sin(time)+1*3, ()=>mouse.y/1236*0.8+.18,.01)
+  .repeat(()=>mouse.x/1236*3+1,3, ()=>dataArray[0]/255*2+1, ()=>dataArray[1]/255*5)
+  .scrollY(.5,()=>dataArray[4]/255 * .005 + 0.01)
   .layer(
     src(o1)
     .mask(o0)
     .luma(.01, .1)
     .invert(.2)
   )
-  .modulate(o0,.02)
 
   .out(o2)
+  render(o1)
 
 
-  shape(3)
-  .scale(()=>mouse.y * 0.0008 + .1 )
-  .repeat(8,3)
-  .modulateScale(osc(8).rotate(Math.sin(time)),.5)
-  .scale(  () => dataArray[2]/255*5)
-  .modulateRotate(osc(20, 0).thresh(0.1, 0.84), () => 0.1 + mouse.x * 0.006)
-  .modulate(o1,.001)
-  .blend(o1)
-  .out(o1)
-
-  shape(2,.001).luma(.8).thresh().invert().modulate(noise(10,.2),.01)
-
-        .layer(shape(2,.001).luma(.8).thresh().invert().scrollY(.025).modulate(noise(9,.1),.025))
-
-         .layer(shape(2,.001).luma(.8).thresh().invert().scrollY(-.025).modulate(noise(7,.3),.025))
-
-         .rotate(Math.PI/2)
-
-         .kaleid(10).scale(.75,100,1).color(0,0,0)
-
-        .out(o3)
-
-  //hush()
-
-  >>
-
-
-  render(o0)
   draw();
 
 }
