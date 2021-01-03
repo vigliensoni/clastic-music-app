@@ -99,7 +99,7 @@ function scale(value, minIn, maxIn, minOut, maxOut){
 function but1() {
   console.log('1 - e01 - window')
 
-  video.src = "./videos/1-E01-crf23.mp4"
+  video.src = "./videos/1-E01-crf22.mp4"
   video.play().then( () => s0.init({src:video, dynamic:true}))
 
 
