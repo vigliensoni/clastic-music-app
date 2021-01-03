@@ -1,8 +1,8 @@
 // Get the modal
-var modal = document.getElementById("myModal");
+var modal = document.getElementById("userAction");
 
 // Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+// var btn = document.getElementById("myBtn");
 
 // Get the element that closes the modal
 var span = document.getElementById("audio");
