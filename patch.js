@@ -40,7 +40,8 @@ playButton.addEventListener('click', () => {
 );
 
 
-
+// let canvas = document.getElementsByTagName("canvas")[0]
+// console.log(canvas)
 
 
 
@@ -82,9 +83,14 @@ function mute(){
   }
 };
 
-// normalize val to 0 -> 1
+// Normalizers 
 function norm (val, min, max) { 
   return (val - min) / (max - min)
+}
+function scale(value, minIn, maxIn, minOut, maxOut){
+  value = Math.min(Math.max(value, minIn), maxIn);
+  value = (value - minIn)/(maxIn - minIn) * (maxOut - minOut) + minOut;
+  return value
 }
 
 
@@ -100,15 +106,15 @@ function but1() {
   solid(1,1,1)
   .layer(osc(500).modulateScale(
       shape(100, () => Math.cos(time * 0.5), 1)
-        .scale(1.1, 0.6)
-        .r(),
+        .scale(1.1, 0.6),
+        // .r(),
       1,
       1,
       () => (time * 1) % 2
     )).modulate(noise(4).scale(1.5,0.8,2).modulateScale(
       shape(100, () => Math.sin(time * 0.5), 1)
-        .scale(1.1, 0.6)
-        .r(),
+        .scale(1.1, 0.6),
+        // .r(),
       -0.5,
       2,
       () => (time * 1) % 2
@@ -127,11 +133,13 @@ function but1() {
     .modulate(o1)
     .modulate(noise(()=>Math.sin(time)*.07+.2),()=>Math.sin(time)*.02+.1)
 
-    .blend(s0, ()=>mouse.y * .0009)
-    .blend(o2).blend(o2)
+    
+    .blend(s0, () => himidFreq * 35)
+    .blend(o2).blend(o2).blend(o2).blend(o2).blend(o2).blend(o2)
 
-    .scrollX(()=>mouse.x * .0000005,.00001)
-    .scrollY(()=>mouse.y * .00000051,.000001)
+    .scrollX(()=> scale(mouse.x, 0, window.innerWidth, -0.05, 0.05), 0.0000)
+    .scrollY(()=> scale(mouse.y, 0, window.innerHeight, -0.05, 0.05), 0.0000)
+    
 
     .out(o2)
 
