@@ -44,6 +44,7 @@ playButton.addEventListener('click', () => {
 
 // FULL SCREEN
 document.addEventListener("keypress", function(e) {
+  // ENTER goes into full screen
   if (e.keyCode === 13) {
     toggleFullScreen();
   }
@@ -70,6 +71,7 @@ function draw() {
     himidFreq = dataArray[3]/255;
     hiFreq = dataArray[4]/255;
     // console.log("mX: " + mouse.x +  " | " + norm(mouse.x, 0, window.innerWidth))
+    console.log(scaler(mouse.y, 0, window.innerHeight, 0, 100))
 };
 
 
@@ -99,7 +101,7 @@ function mute(){
 function norm (val, min, max) { 
   return (val - min) / (max - min)
 }
-function scale(value, minIn, maxIn, minOut, maxOut){
+function scaler(value, minIn, maxIn, minOut, maxOut){
   value = Math.min(Math.max(value, minIn), maxIn);
   value = (value - minIn)/(maxIn - minIn) * (maxOut - minOut) + minOut;
   return value
@@ -149,8 +151,8 @@ function but1() {
     .blend(s0, () => himidFreq * 35)
     .blend(o2).blend(o2).blend(o2).blend(o2).blend(o2).blend(o2)
 
-    .scrollX(()=> scale(mouse.x, 0, window.innerWidth, -0.05, 0.05), 0.0000)
-    .scrollY(()=> scale(mouse.y, 0, window.innerHeight, -0.05, 0.05), 0.0000)
+    .scrollX(()=> scaler(mouse.x, 0, window.innerWidth, -0.05, 0.05), 0.0000)
+    .scrollY(()=> scaler(mouse.y, 0, window.innerHeight, -0.05, 0.05), 0.0000)
     
 
     .out(o2)
@@ -161,7 +163,6 @@ function but1() {
 
   draw();
   }
-
 
 function but2() {
   console.log('2 - bd08 - flesh')
@@ -194,7 +195,6 @@ voronoi(3)
   render(o0)
   draw();
 }
-
 
 function but3() {
   console.log('3 - bd07 - salt')
@@ -264,9 +264,14 @@ function but4() {
 
   .out(o0)
 
+  // scaler(mouse.y, 0, window.innerHeight, 0, 100)
+// .contrast( ()=> scaler(mouse.y, 0, window.innerHeight, 14, 140) )
 
-
-  src(s0).mult(osc([950,-950].smooth().fast(.03),0.013).contrast(14).brightness(-6))
+  src(s0).mult(osc([80*Math.sin(time/10),-80*Math.sin(time/10)].smooth(0.1875)
+  .fast(8)
+  ,0.013)
+  .contrast(14 )
+  .brightness(-6))
   .modulate(o2,.5)
   .out(o1)
 
@@ -274,7 +279,7 @@ function but4() {
 
   src(s0)
 
-  shape(()=>Math.sin(time)+1*3, ()=>mouse.y/1236*0.8+.18,.01)
+  shape(()=>scaler(mouse.x, 0, window.innerHeight, 1, 10) , ()=> mouse.y/1236*0.8+.18,.01)
   .repeat(()=>mouse.x/1236*3+1,3, ()=>dataArray[0]/255*2+1, ()=>dataArray[1]/255*5)
   .scrollY(.5,()=>dataArray[4]/255 * .005 + 0.01)
   .layer(
@@ -412,7 +417,6 @@ function but7() {
 
 }
 
-
 function but8() {
   console.log('8 - bd01 - asociaciones')
 
@@ -458,6 +462,7 @@ draw();
 
 
 }
+
 function but9() {
   console.log('9 - bd02 - ensamblaje')
 

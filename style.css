@@ -1,3 +1,10 @@
+@import url('media/webfonts/stylesheet.css');
+
+index, html {
+    font-family:'Syne', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+}
 .tableRow
 {
     display: table;
@@ -5,7 +12,9 @@
     table-layout: fixed;
     border-spacing: 10px;
     text-align: center;
-    font-family:Copperplate;
+    font-family:'Syne', sans-serif;
+     font-weight: bold;
+    font-style: normal;
     margin-left: auto;
     margin-right: auto;
 }
@@ -13,15 +22,47 @@
 {
     display: table-cell;
     background-color: rgb(0, 0, 0);
-    font-family:Copperplate;
+    font-family:/* Copperplate; */'Syne', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+/*     border: 1px solid #f4f2d0; */
+    padding: 3px;
+    text-transform: uppercase;
+    text-decoration: underline;
+
 }
 
+
 /* Info */
+
 .info
 {
-    display: table;
-    background-color: rgb(0, 0, 0);
-    font-family:monospace;
+/*     display: table; */
+    background-color: /* #34271b */rgb(0, 0, 0);
+    font-family:'Syne', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 10px;
+}
+.info_details {
+    
+font-family:/* monospace */'Syne', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    text-align: center;
+}
+
+
+.playbutton {
+    font-family: 'Syne';
+    font-weight: bold;
+    font-style: normal;
+    font-size: 20px;
+    text-decoration: underline;
+    padding: 5px;
+/*     border-color: #f6f3c4; */
+/*     border: 1px; */
 }
 
 
@@ -41,14 +82,21 @@
   
   /* Modal Content/Box */
   #userAction-content {
-    background-color: #140d0d;
-    margin: 15% auto; /* 15% from the top and centered */
+    background-color: #000/* #140d0d */;
+    margin: 5% auto; /* 15% from the top and centered */
     padding: 20px;
-    border: 1px solid rgb(0, 0, 0);
+/*     border: 1px dotted #f6f3c4; */
     width: 80%; /* Could be more or less, depending on screen size */
+    text-align: center;
   }
   
-
+.cover img{
+   margin-left: auto;
+   margin-right: auto;
+   text-align: center; 
+  max-width: 50%;
+   
+}
 
 
   /* CANVAS */
@@ -56,9 +104,11 @@
 body {
   background-color: #000000;
   color:blanchedalmond;
-  font-family: Copperplate;
-  }
+    font-family:'Syne', sans-serif;
+    font-weight: normal;
+    font-style: normal;
 
+  }
 
 canvas {
   padding: 0;
@@ -67,9 +117,13 @@ canvas {
   width: 800px;
 }
 
+a:link { 
+    text-decoration: underline;
+  color: blanchedalmond; 
+  font-weight: normal;
+}
 
 a:hover {
-  text-decoration: none;
   font-weight: none;
   color:blanchedalmond;
   text-decoration: line-through;
@@ -77,18 +131,36 @@ a:hover {
   text-decoration-color: blanchedalmond;
 }
 
-a:link { 
-  color: blanchedalmond; 
-  font-weight: normal 
-}
+
 
 a:visited { 
   color: blanchedalmond; 
   text-decoration: none;
-  font-weight: normal 
+  font-weight: normal;
 }
 
 a:active { 
   color: blanchedalmond; 
   text-decoration: none;
+}
+
+
+@media screen and (max-width: 500px) {
+/*
+  .cover img{
+   margin-left: auto;
+   margin-right: auto;
+   text-align: center; 
+   width: 250px;
+   
+}
+*/
+  #userAction-content {
+    background-color: #000/* #140d0d */;
+    margin: 5% auto; /* 15% from the top and centered */
+    padding: 20px;
+/*     border: 1px dotted #f6f3c4; */
+    width: 40%; /* Could be more or less, depending on screen size */
+    text-align: center;
+  }
 }
