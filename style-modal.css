@@ -19,13 +19,14 @@
 .modal.right .modal-content {
     height: 100%;
     overflow-y: auto;
-    background-color: #110808;
+    background-color: #000/* #110808 */;
 }
 
 .modal.left .modal-body,
 .modal.right .modal-body {
     padding: 15px 15px 80px;
-    background-color: #110808;
+    background-color: #000/* #110808 */;
+    font-weight: normal;
 }
 
 /*Left*/
@@ -62,7 +63,8 @@
 
 .modal-header {
     border-bottom-color: #EEEEEE;
-    background-color: #110808;
+/*     background-color: #110808; */    background-color: #000/* #110808 */;
+
 }
 
 
