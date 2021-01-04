@@ -98,6 +98,16 @@ font-family:/* monospace */'Syne', sans-serif;
    
 }
 
+@media only screen and (max-width: 600px) {
+  .cover img {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center; 
+    width: 250px;
+  }
+}
+
+
 
   /* CANVAS */
 
