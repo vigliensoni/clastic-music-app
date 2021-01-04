@@ -86,8 +86,10 @@ padding-bottom: 0px;
     border-radius: 0;
     font-size: 16px;
     background-color: #000000;
-    color: #fff;
+    color: blanchedalmond;
     align: left;
+    text-transform: uppercase;
+    /* text-decoration: underline; */
     }
 
 .btn-demo-r {
@@ -96,8 +98,10 @@ padding-bottom: 0px;
     border-radius: 0;
     font-size: 16px;
     background-color: #000000;
-    color: #fff;
+    color: blanchedalmond;
     align: right;
+    text-transform: uppercase;
+    /* text-decoration: underline; */
     }
 
 .btn-demo:focus {
