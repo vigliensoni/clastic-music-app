@@ -1,8 +1,7 @@
-import url('media/webfonts/stylesheet.css');
+@import url('media/webfonts/stylesheet.css');
 
 index, html {
-    font-family:/* Copperplate; */'Syne', sans-serif;
-/*      font-weight: bold; */
+    font-family:'Syne', sans-serif;
     font-style: normal;
     font-weight: normal;
 }
@@ -13,7 +12,7 @@ index, html {
     table-layout: fixed;
     border-spacing: 10px;
     text-align: center;
-    font-family:/* Copperplate; */'Syne', sans-serif;
+    font-family:'Syne', sans-serif;
      font-weight: bold;
     font-style: normal;
     margin-left: auto;
@@ -35,19 +34,12 @@ index, html {
 
 
 /* Info */
-/*
-.home_info{
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
-*/
+
 .info
 {
 /*     display: table; */
     background-color: /* #34271b */rgb(0, 0, 0);
-    font-family:/* monospace */'Syne', sans-serif;
+    font-family:'Syne', sans-serif;
     font-style: normal;
     font-weight: bold;
     text-align: center;
@@ -94,14 +86,15 @@ font-family:/* monospace */'Syne', sans-serif;
     margin: 5% auto; /* 15% from the top and centered */
     padding: 20px;
 /*     border: 1px dotted #f6f3c4; */
-    width: 60%; /* Could be more or less, depending on screen size */
+    width: 80%; /* Could be more or less, depending on screen size */
     text-align: center;
   }
   
-.cover {
+.cover img{
    margin-left: auto;
    margin-right: auto;
    text-align: center; 
+  max-width: 50%;
    
 }
 
@@ -111,12 +104,11 @@ font-family:/* monospace */'Syne', sans-serif;
 body {
   background-color: #000000;
   color:blanchedalmond;
-    font-family:/* Copperplate; */'Syne', sans-serif;
-    font-weight: bold;
+    font-family:'Syne', sans-serif;
+    font-weight: normal;
     font-style: normal;
 
   }
-
 
 canvas {
   padding: 0;
@@ -125,9 +117,13 @@ canvas {
   width: 800px;
 }
 
+a:link { 
+    text-decoration: underline;
+  color: blanchedalmond; 
+  font-weight: normal;
+}
 
 a:hover {
-  text-decoration: none;
   font-weight: none;
   color:blanchedalmond;
   text-decoration: line-through;
@@ -135,18 +131,36 @@ a:hover {
   text-decoration-color: blanchedalmond;
 }
 
-a:link { 
-  color: blanchedalmond; 
-  font-weight: normal 
-}
+
 
 a:visited { 
   color: blanchedalmond; 
   text-decoration: none;
-  font-weight: normal 
+  font-weight: normal;
 }
 
 a:active { 
   color: blanchedalmond; 
   text-decoration: none;
+}
+
+
+@media screen and (max-width: 500px) {
+/*
+  .cover img{
+   margin-left: auto;
+   margin-right: auto;
+   text-align: center; 
+   width: 250px;
+   
+}
+*/
+  #userAction-content {
+    background-color: #000/* #140d0d */;
+    margin: 5% auto; /* 15% from the top and centered */
+    padding: 20px;
+/*     border: 1px dotted #f6f3c4; */
+    width: 40%; /* Could be more or less, depending on screen size */
+    text-align: center;
+  }
 }
