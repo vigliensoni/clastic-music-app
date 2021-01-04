@@ -324,9 +324,10 @@ function but4() {
 
   src(s0)
 
-  shape(()=>scaler(mouse.x, 0, window.innerHeight, 1, 10) , ()=> mouse.y/1236*0.8+.18,.01)
+  shape(()=>scaler(mouse.x, 0, window.innerHeight, 1, 5) , ()=> mouse.y/1236*0.8+.18,.01)
   .repeat(()=>mouse.x/1236*3+1,3, ()=>dataArray[0]/255*2+1, ()=>dataArray[1]/255*5)
   .scrollY(.5,()=>dataArray[4]/255 * .005 + 0.01)
+  .scale( ()=> scaler(mouse.y, 0, window.innerHeight, 0.01, 10) )
   .layer(
     src(o1)
     .mask(o0)
