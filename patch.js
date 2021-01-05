@@ -233,24 +233,24 @@ t9.addEventListener('click', () => {
 function but0() {
   // console.log('home');
    
-  s2.initImage("media/img/modelo2.gif")
+  s2.initImage("media/img/modelo3.gif")
   src(s2)
   .scrollX(()=> scaler(mouse.x, 0, window.innerWidth, -0.5, 0.5), 0.0)
   .scrollY(()=> scaler(mouse.y, 0, window.innerHeight, -0.05, 0.05), 0.0000)
   .scale( () => scaler(mouse.y, 0, window.innerHeight, 0.7, 0.394), scaler(mouse.y, 0, window.innerHeight, 0.9, 0.507))
-  .scale([0.95, 1.05].smooth().fast(0.125))
+  .scale([0.90, 1.10].smooth(1).fast(0.25))
   // .blend(o2).blend(o2)
   .out(o2)
 
   
-  video.src = "./media/img/cuadro.mp4"
+  video.src = "./videos/00-cuadro.mp4"
   video.play().then( () => s0.init({src:video, dynamic:true}))
   
   src(s0)
   .scrollX(()=> scaler(mouse.x, 0, window.innerWidth, -0.04, 0.04), 0.0)
   .scrollY(()=> scaler(mouse.y, 0, window.innerHeight, -0.04, 0.04), 0.0000)
   .scale(()=> scaler(mouse.x, 0, window.innerWidth, 0.8, 1.2))
-  .scale([1.05,0.95].smooth().fast(0.125))
+  .scale([1.05,0.95].smooth(1).fast(0.25))
 
   .layer(o2).blend(o0)
   .out(o0)
@@ -572,49 +572,50 @@ function but7() {
 function but8() {
   console.log('8 - bd01 - asociaciones')
 
-  // video.src = "./videos/8-BD01-crf23.mp4"
-  video.src = "./videos/short.mp4"
+  video.src = "./videos/8-BD01-crf22.mp4"
+  //  "./videos/9-BD02-crf23.mp4"
   video.play().then( () => s0.init({src:video, dynamic:true}) )
 
-  osc(3,()=> dataArray[4]/255*.0003 )
-  .rotate(1.4,.2)
-  .add(osc(3,.2))
-  .out(o0)
 
-  osc(0.50   ,1.25).mult(shape(12,20.09).rotate(()=>Math.random()*15))
+
+
+  osc(0.50,1.25).mult(shape(12,20.09).rotate(()=>Math.random()*15))
     .diff(osc(()=>dataArray[0]/255*.1+03))
     .add(shape(3,22).rotate(()=>Math.random()*15).blend(gradient(1.6)))
     .modulate(noise(6)
               .modulate(noise(2).scrollY(()=> dataArray[2]/255*5,0.0625)))
-    .blend(o0)
-    .color(17,-90.5,0.75)
+    // .blend(o0)
+    .color(17,-90.5,0.75).hue(()=>time*.005)
     .out(o1)
 
+
+
+
+
   src(s0)
-  .scale(() =>  mouse.x * 0.0005+ .2)
-  .rotate(()=>dataArray[3]/255*.01*Math.sin(time*.2)+.003)
+  .kaleid(()=>mouse.y*.01+.03)
+  .scale(() =>  mouse.x * 0.001+ .5, () =>  mouse.x * 0.001+ .5)
+.scrollX(({time})=>4+3*Math.sin(time*.002))
+.rotate(()=>dataArray[3]/255*.01*Math.sin(time*.2)+.003)
   .modulate(o1)
-  .rotate(()=> dataArray[0]/255*-.3+-.3 )
-  .kaleid(()=>mouse.y*.001+1)
-  .scrollX(({time})=>4+3*Math.sin(time*.002))
+  .mult(o1,.6)
+
+  // .rotate(()=> dataArray[0]/255*-.3+-.3 )
   .saturate(0.2)
   .contrast(2)
-  .modulateRotate(noise(.2, ()=> dataArray[3]/255*-.02 ))
+ .rotate(.2, ()=> dataArray[3]/255*-.007 )
   .modulate(o2,.002)
-  .blend(o3)
   .out(o2)
 
-  gradient(.2,.03,2)
-  .saturate(()=>dataArray[1]/255*3+0.2)
-  .mask(o1)
-  .out(o3)
 
-render()
+
+
+render(o2)
 draw();
-
-
-
 }
+
+
+
 
 function but9() {
   console.log('9 - bd02 - ensamblaje')
@@ -632,22 +633,38 @@ function but9() {
 
   src(s0)
   // .contrast(()=>mouse.x/1236*0.01+.03)
-  .color(1,0,0).scrollX(0.03,0.1).scrollX(()=>dataArray[0]*.0004+0.00004, ()=>dataArray[0]*-.0004-0.00004)
+  .color(1,0,0)
+  // .scrollX(0.03,0.1)
+  // .scrollX(()=>dataArray[0]*.0004+0.00004, ()=>dataArray[0]*-.0004-0.00004)
+  .scrollX(()=> himidFreq * scaler(mouse.x, 0, window.innerWidth, -1, 1), 0)
+  .scrollY(()=> himidFreq * scaler(mouse.y, 0, window.innerHeight, -1, 1), 0)
+  // .scrollX(()=> 0.1 * himidFreq, 0)
 
   .add(src(s0).color(0,1,0)
+  .scrollX(()=> 4 * hiFreq * scaler(mouse.x, 0, window.innerWidth, -1, 1), 0)
+  .scrollY(()=> 4 * hiFreq * scaler(mouse.y, 0, window.innerHeight, -1, 1), 0)
   // .scale(()=>dataArray[0]*0.0007+.1)
   // .modulate(src(s0),.03)
 )
-  .add(src(s0).color(.5,.5,0).scrollX(-0.02,-0.15).scrollX(()=>dataArray[0]*.00018+0.000018, ()=>dataArray[0]*-.00018-0.000018))
-  .add(src(s0).color(0,0,1).scrollX(-0.03,0.3).scrollX(()=>dataArray[3]*.0003+0.0001, ()=>dataArray[3]*-.0004-0.0001))
+  .add(src(s0).color(.5,.5,0)
+  .scrollX(()=> 2 * loFreq * scaler(mouse.x, 0, window.innerWidth, -1, 1), 0)
+  .scrollY(()=> 3 * loFreq * scaler(mouse.y, 0, window.innerHeight, -1, 1), 0)
+  // .scrollX( () => -0.1* loFreq, 0)
+    )
+
+  .add(src(s0).color(0,0,1)
+    // .scrollX(-0.03,0.3)
+    .scrollX(()=> midFreq * scaler(mouse.x, 0, window.innerWidth, -1, 1), 0)
+    .scrollY(()=> 3 *  midFreq * scaler(mouse.y, 0, window.innerHeight, -1, 1), 0)
+    )
   .out(o0)
 
 
   src(o0)
   // .modulate(o0)
-    // .modulateRotate(o0)
+    // .modulateRotate(o0, scaler(mouse.x, 0, window.innerWidth, -0.1, 0.1))
 
-   .modulate(o0,()=>mouse.y/1236*.002+.0001)
+  //  .modulate(o0,()=>mouse.y/1236*.002+.0001)
 
 .out(o2)
 
@@ -655,7 +672,7 @@ function but9() {
 
   src(o0)
   .scale(() => dataArray[3]/255*.3+1.3)
-  .scrollX(({time})=>4+3*Math.sin(time*.2))
+  // .scrollX(({time})=>4+3*Math.sin(time*.2))
   .blend(o1,6)
   .saturate(0.2)
   .contrast(2)
