@@ -3,12 +3,12 @@ const hydra = new Hydra();
 
 // Video 
 const video = document.createElement("video");
-video.id="allende";
-video.autoplay = true;
+video.id="clasticvideos";
 video.crossOrigin = "anonymous";
-video.loop = true;
+video.loop = false;
 video.muted = false;
 
+let videotimeRemind;
 
 // Audio & audio analyser
 
@@ -62,6 +62,7 @@ function toggleFullScreen() {
 }
 
 
+
 function draw() {
     drawVisual = requestAnimationFrame(draw);
     analyser.getByteFrequencyData(dataArray);
@@ -70,17 +71,16 @@ function draw() {
     midFreq = dataArray[2]/255;
     himidFreq = dataArray[3]/255;
     hiFreq = dataArray[4]/255;
+    videotimeRemind = video.duration - video.currentTime
     // console.log("mX: " + mouse.x +  " | " + norm(mouse.x, 0, window.innerWidth))
-    console.log(scaler(mouse.y, 0, window.innerHeight, 0, 100))
+    if ( videotimeRemind < 0.1 ) but0()
 };
 
 
-// Video muting
+// Audio muting
 let muteButton = document.getElementById('mute');
 let muted = false;
-
 muteButton.addEventListener('click', () => mute() );
-
 
 function mute(){
   if ( muted == false ) {
@@ -107,54 +107,160 @@ function scaler(value, minIn, maxIn, minOut, maxOut){
   return value
 }
 
+track = { 1: "Siltstone", 2: "Breccia", 3: "Ooze", 4: "Claystone", 5: "Clastic", 
+          6: "Fall In Sync", 7: "Telematic Awakening", 8: "Sandstone", 9: "Shale" }
+
+function trackdefaultColor () {
+  // Default all colors to white
+  let tracks = document.getElementsByClassName('tableColumn');
+  for (let t = 0; t < tracks.length; t++ ){
+    tracks[t].style.color = "blanchedalmond";
+  }
+}
+
+
 // Track buttons
+let trackTitle = document.getElementsByClassName("track-title")[0];
+
+//  buttonHandler(element, id)
+
+// function buttonHandler (element, id) {
+//   let t1 = document.getElementById('but1');
+//   element.addEventListener('mouseover', () => { element.style.textDecoration = "line-through"; })
+//   element.addEventListener('mouseleave', () => { element.style.textDecoration = "none"; })
+//   element.addEventListener('click', () => { 
+//     trackdefaultColor();
+//     element.style.color = "red";
+//     but1(); 
+//   })
+// } 
+
+let t0 = document.getElementById('audio')
+// t1.addEventListener('mouseover', () => { t1.style.textDecoration = "line-through"; })
+// t1.addEventListener('mouseleave', () => { t1.style.textDecoration = "none"; })
+t0.addEventListener('click', () => { 
+  trackdefaultColor();
+  but0(); 
+})
+
+
 let t1 = document.getElementById('but1')
 t1.addEventListener('mouseover', () => { t1.style.textDecoration = "line-through"; })
 t1.addEventListener('mouseleave', () => { t1.style.textDecoration = "none"; })
-t1.addEventListener('click', () => { but1(); })
+t1.addEventListener('click', () => { 
+  trackdefaultColor();
+  t1.style.color = "red";
+  but1(); 
+})
 
 let t2 = document.getElementById('but2')
 t2.addEventListener('mouseover', () => { t2.style.textDecoration = "line-through"; })
 t2.addEventListener('mouseleave', () => { t2.style.textDecoration = "none"; })
-t2.addEventListener('click', () => { but2(); })
+t2.addEventListener('click', () => { 
+  trackdefaultColor();
+  t2.style.color = "red";
+  but2(); 
+})
 
 let t3 = document.getElementById('but3')
 t3.addEventListener('mouseover', () => { t3.style.textDecoration = "line-through"; })
 t3.addEventListener('mouseleave', () => { t3.style.textDecoration = "none"; })
-t3.addEventListener('click', () => { but3(); })
+t3.addEventListener('click', () => { 
+  trackdefaultColor();
+  t3.style.color = "red";
+  but3(); 
+})
 
 let t4 = document.getElementById('but4')
 t4.addEventListener('mouseover', () => { t4.style.textDecoration = "line-through"; })
 t4.addEventListener('mouseleave', () => { t4.style.textDecoration = "none"; })
-t4.addEventListener('click', () => { but4(); })
+t4.addEventListener('click', () => { 
+  trackdefaultColor();
+  t4.style.color = "red";
+  but4(); 
+})
 
 let t5 = document.getElementById('but5')
 t5.addEventListener('mouseover', () => { t5.style.textDecoration = "line-through"; })
 t5.addEventListener('mouseleave', () => { t5.style.textDecoration = "none"; })
-t5.addEventListener('click', () => { but5(); })
+t5.addEventListener('click', () => { 
+  trackdefaultColor();
+  t5.style.color = "red";
+  but5(); 
+})
 
 let t6 = document.getElementById('but6')
 t6.addEventListener('mouseover', () => { t6.style.textDecoration = "line-through"; })
 t6.addEventListener('mouseleave', () => { t6.style.textDecoration = "none"; })
-t6.addEventListener('click', () => { but6(); })
+t6.addEventListener('click', () => { 
+  trackdefaultColor();
+  t6.style.color = "red";
+  but6(); 
+})
 
 let t7 = document.getElementById('but7')
 t7.addEventListener('mouseover', () => { t7.style.textDecoration = "line-through"; })
 t7.addEventListener('mouseleave', () => { t7.style.textDecoration = "none"; })
-t7.addEventListener('click', () => { but7(); })
+t7.addEventListener('click', () => { 
+  trackdefaultColor();
+  t7.style.color = "red";
+  but7(); 
+})
 
 let t8 = document.getElementById('but8')
 t8.addEventListener('mouseover', () => { t8.style.textDecoration = "line-through"; })
 t8.addEventListener('mouseleave', () => { t8.style.textDecoration = "none"; })
-t8.addEventListener('click', () => { but8(); })
+t8.addEventListener('click', () => { 
+  trackdefaultColor();
+  t8.style.color = "red";
+  but8(); 
+})
 
 let t9 = document.getElementById('but9')
 t9.addEventListener('mouseover', () => { t9.style.textDecoration = "line-through"; })
 t9.addEventListener('mouseleave', () => { t9.style.textDecoration = "none"; })
-t9.addEventListener('click', () => { but9(); })
+t9.addEventListener('click', () => { 
+  trackdefaultColor();
+  t9.style.color = "red";
+  but9(); 
+})
+
+
+
 
 
 // Scenes
+function but0() {
+  // console.log('home');
+   
+  s2.initImage("media/img/modelo2.gif")
+  src(s2)
+  .scrollX(()=> scaler(mouse.x, 0, window.innerWidth, -0.5, 0.5), 0.0)
+  .scrollY(()=> scaler(mouse.y, 0, window.innerHeight, -0.05, 0.05), 0.0000)
+  .scale( () => scaler(mouse.y, 0, window.innerHeight, 0.7, 0.394), scaler(mouse.y, 0, window.innerHeight, 0.9, 0.507))
+  .scale([0.95, 1.05].smooth().fast(0.125))
+  // .blend(o2).blend(o2)
+  .out(o2)
+
+  
+  video.src = "./media/img/cuadro.mp4"
+  video.play().then( () => s0.init({src:video, dynamic:true}))
+  
+  src(s0)
+  .scrollX(()=> scaler(mouse.x, 0, window.innerWidth, -0.04, 0.04), 0.0)
+  .scrollY(()=> scaler(mouse.y, 0, window.innerHeight, -0.04, 0.04), 0.0000)
+  .scale(()=> scaler(mouse.x, 0, window.innerWidth, 0.8, 1.2))
+  .scale([1.05,0.95].smooth().fast(0.125))
+
+  .layer(o2).blend(o0)
+  .out(o0)
+  render(o0)
+  
+
+}
+
+
+
 function but1() {
   console.log('1 - e01 - window')
 
@@ -466,7 +572,8 @@ function but7() {
 function but8() {
   console.log('8 - bd01 - asociaciones')
 
-  video.src = "./videos/8-BD01-crf23.mp4"
+  // video.src = "./videos/8-BD01-crf23.mp4"
+  video.src = "./videos/short.mp4"
   video.play().then( () => s0.init({src:video, dynamic:true}) )
 
   osc(3,()=> dataArray[4]/255*.0003 )
