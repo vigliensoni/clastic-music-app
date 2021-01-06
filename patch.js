@@ -405,7 +405,6 @@ function but4() {
   video.play().then( () => s0.init({src:video, dynamic:true}) )
 
   src(s0)
-  // .rotate (.1,() => Math.sin(time * 0.00008))
   .scale(1.4)
   .scale(  () => dataArray[3]/255*1+.2 )
   .add(o1,0.1)
@@ -413,12 +412,17 @@ function but4() {
   .blend(o0)
   .modulate(o2,.03)
   .modulate(o1, .5)
-  // .modulate(o1, .03)
+
   .out(o0)
 
+  // scaler(mouse.y, 0, window.innerHeight, 0, 100)
+// .contrast( ()=> scaler(mouse.y, 0, window.innerHeight, 14, 140) )
 
-
-  src(s0).mult(osc([950,-950].smooth().fast(.03),0.013).contrast(14).brightness(-6))
+  src(s0).mult(osc([80*Math.sin(time/10),-80*Math.sin(time/10)].smooth(0.1875)
+  .fast(8)
+  ,0.013)
+  .contrast(14 )
+  .brightness(-6))
   .modulate(o2,.5)
   .out(o1)
 
@@ -426,9 +430,10 @@ function but4() {
 
   src(s0)
 
-  shape(()=>Math.sin(time)+1*3, ()=>mouse.y/1236*0.8+.18,.01)
+  shape(()=>scaler(mouse.x, 0, window.innerHeight, 1, 5) , ()=> mouse.y/1236*0.8+.18,.01)
   .repeat(()=>mouse.x/1236*3+1,3, ()=>dataArray[0]/255*2+1, ()=>dataArray[1]/255*5)
   .scrollY(.5,()=>dataArray[4]/255 * .005 + 0.01)
+  .scale( ()=> scaler(mouse.y, 0, window.innerHeight, 0.01, 10) )
   .layer(
     src(o1)
     .mask(o0)
@@ -437,14 +442,9 @@ function but4() {
   )
 
   .out(o2)
+  render(o1)
 
 
-  //hush()
-
-  
-
-
-  render()
   draw();
 
 }
