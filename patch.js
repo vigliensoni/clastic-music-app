@@ -457,49 +457,46 @@ function but5() {
   video.src = "./videos/5-CLASTIC-crf22.mp4"
   video.play().then( () => s0.init({src:video, dynamic:true}) )
 
-  // src(s0)
-  // // .saturate(.4)
-  // // .contrast(()=>mouse.x * .0006+.3 )
-  // // .rotate(()=>dataArray[2]*4)
-  // // .rotate(({time}) => 5.0+2*Math.sin(time*.03),.01)
-  // // .modulate((o2), () => dataArray[0]*1.2)
-  // // .blend(o0)
-  // .out(o0)
-
   src(o0)
-    .layer(
-      src(s0)
-        // .thresh(0.3,0.7)
-        .contrast(1.1)
-        .mask(shape([3,6,9,5]).luma(0.5,0.6)
-  .scale([1.9,0.79].smooth())
+  .layer(
+    src(s0)
+      // .thresh(0.3,0.7)
+      .contrast(1.1)
+      .mask(shape([3,6,9,5])
+      .scrollX( () => scaler(mouse.x, 0, window.innerWidth, -1, 1) )
+      .scrollY( () => scaler(mouse.y, 0, window.innerHeight, -1, 1) )
+      .scale( () => 1.0 + 1.0 * himidFreq, () => 1.0 + 1.0 * himidFreq)
+      .saturate(1.5)
+      // .luma(0.5,0.6)
+
+)
   )
-    )
-    .scale(1.01)
-    .out(o0)
+  .scale(1.01)
+  .out(o0)
 
 
 
-  voronoi(2,0.3,0.2).shift(0.5)
-  // .modulatePixelate(noise(4,0.2),32,2)
-  .scale(()=>1+(Math.sin(time*.25)*0.05))
-  .scale( () => 3*himidFreq, () => 3*himidFreq)
-  .scale(()=> norm(0.25*mouse.x, 0, window.innerWidth),()=>mouse.y * 0.002 + 0.00001)
+voronoi(2,0.3,0.2).shift(0.5)
+.scale(()=>1+(Math.sin(time*.25)*0.05))
+.scale( () => scaler(mouse.x, 0, window.innerWidth, 1.5, 3.5), () => scaler(mouse.x, 0, window.innerWidth, 1.5, 3.0))
 
-  .out(o1)
-
-
-  src(o0)
-  // .mask(o1,.4)
-  // .modulateHue(o0,()=>dataArray[1]/255*.1+1)
-  // .luma(.1)
-   .modulate(o1, .4)
-  .out(o3)
+.out(o1)
 
 
 
-  render(o3)
-  draw();
+
+
+src(o0)
+// .mask(o1,.4)
+// .modulateHue(o0,()=>dataArray[1]/255*.1+1)
+// .luma(.1)
+ .modulate(o1, .4)
+.out(o3)
+
+
+
+render(o0)
+draw();
 
 }
 
