@@ -495,7 +495,7 @@ src(o0)
 
 
 
-render(o0)
+render(o)
 draw();
 
 }
