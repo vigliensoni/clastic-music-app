@@ -574,46 +574,37 @@ function but7() {
 function but8() {
   console.log('8 - bd01 - asociaciones')
 
-  video.src = "./videos/8-BD01-crf22.mp4"
+  video.src = "./videos/8-BD01-crf23.mp4"
   //  "./videos/9-BD02-crf23.mp4"
   video.play().then( () => s0.init({src:video, dynamic:true}) )
 
-
-
-
+// AGUA
   osc(0.50,1.25).mult(shape(12,20.09).rotate(()=>Math.random()*15))
-    .diff(osc(()=>dataArray[0]/255*.1+03))
+    .diff(osc(() => loFreq ))
     .add(shape(3,22).rotate(()=>Math.random()*15).blend(gradient(1.6)))
     .modulate(noise(6)
-              .modulate(noise(2).scrollY(()=> dataArray[2]/255*5,0.0625)))
-    // .blend(o0)
+              .modulate(noise(2).scrollY(()=> himidFreq * 5, 0.0625)))
     .color(17,-90.5,0.75).hue(()=>time*.005)
     .out(o1)
 
 
-
-
-
+// VIDEO
   src(s0)
   .kaleid(()=>mouse.y*.01+.03)
-  .scale(() =>  mouse.x * 0.001+ .5, () =>  mouse.x * 0.001+ .5)
-.scrollX(({time})=>4+3*Math.sin(time*.002))
-.rotate(()=>dataArray[3]/255*.01*Math.sin(time*.2)+.003)
+  .scale( () => scaler(mouse.x, 0, window.innerWidth, 0.25, 1.5), scaler(mouse.x, 0, window.innerWidth, 0.25, 1.5))
+  .scrollX(({time})=>4+3*Math.sin(time*.002))
   .modulate(o1)
   .mult(o1,.6)
 
-  // .rotate(()=> dataArray[0]/255*-.3+-.3 )
-  .saturate(0.2)
-  .contrast(2)
- .rotate(.2, ()=> dataArray[3]/255*-.007 )
+  .saturate(1.5)
   .modulate(o2,.002)
+
+  
   .out(o2)
-
-
-
 
 render(o2)
 draw();
+
 }
 
 
@@ -638,26 +629,26 @@ function but9() {
   .color(1,0,0)
   // .scrollX(0.03,0.1)
   // .scrollX(()=>dataArray[0]*.0004+0.00004, ()=>dataArray[0]*-.0004-0.00004)
-  .scrollX(()=> himidFreq * scaler(mouse.x, 0, window.innerWidth, -1, 1), 0)
-  .scrollY(()=> himidFreq * scaler(mouse.y, 0, window.innerHeight, -1, 1), 0)
+  .scrollX(()=> himidFreq * scaler(mouse.x, 0, window.innerWidth, -0.1, 0.1), 0)
+  .scrollY(()=> himidFreq * scaler(mouse.y, 0, window.innerHeight, -0.1, 0.1), 0)
   // .scrollX(()=> 0.1 * himidFreq, 0)
 
   .add(src(s0).color(0,1,0)
-  .scrollX(()=> 4 * hiFreq * scaler(mouse.x, 0, window.innerWidth, -1, 1), 0)
-  .scrollY(()=> 4 * hiFreq * scaler(mouse.y, 0, window.innerHeight, -1, 1), 0)
+  .scrollX(()=> 4 * hiFreq * scaler(mouse.x, 0, window.innerWidth, -0.1, 0.1), 0)
+  .scrollY(()=> 4 * hiFreq * scaler(mouse.y, 0, window.innerHeight, -0.1, 0.1), 0)
   // .scale(()=>dataArray[0]*0.0007+.1)
   // .modulate(src(s0),.03)
 )
   .add(src(s0).color(.5,.5,0)
-  .scrollX(()=> 2 * loFreq * scaler(mouse.x, 0, window.innerWidth, -1, 1), 0)
-  .scrollY(()=> 3 * loFreq * scaler(mouse.y, 0, window.innerHeight, -1, 1), 0)
+  .scrollX(()=> 2 * loFreq * scaler(mouse.x, 0, window.innerWidth, -0.1, 0.1), 0)
+  .scrollY(()=> 3 * loFreq * scaler(mouse.y, 0, window.innerHeight, -0.1, 0.1), 0)
   // .scrollX( () => -0.1* loFreq, 0)
     )
 
   .add(src(s0).color(0,0,1)
     // .scrollX(-0.03,0.3)
-    .scrollX(()=> midFreq * scaler(mouse.x, 0, window.innerWidth, -1, 1), 0)
-    .scrollY(()=> 3 *  midFreq * scaler(mouse.y, 0, window.innerHeight, -1, 1), 0)
+    .scrollX(()=> midFreq * scaler(mouse.x, 0, window.innerWidth, -0.1, 0.1), 0)
+    .scrollY(()=> 3 *  midFreq * scaler(mouse.y, 0, window.innerHeight, -0.1, 0.1), 0)
     )
   .out(o0)
 
