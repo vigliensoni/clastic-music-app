@@ -75,12 +75,7 @@ function draw() {
     videotimeRemind = video.duration - video.currentTime
     // AUTOPLAY CONTROL if trackNo is 0 (but0) or -1 (but9)
     if ( videotimeRemind < 0.1 ) {
-      if ( trackNo === 0 || trackNo === 9)  { 
-        scene[0]()
-      }
-      else {
-        scene[trackNo + 1]()
-      }
+      scene[trackNo + 1]()
     }
     
 };
@@ -234,10 +229,10 @@ t9.addEventListener('click', () => {
 // Scenes
 function but0() {
   console.log('home');
-  trackNo = 0;
+  // trackNo = 0;
 
   trackdefaultColor ()
-
+  video.pause()
 
   s2.initImage("media/img/modelo3.gif")
   src(s2)
@@ -251,9 +246,7 @@ function but0() {
   .out(o2)
 
   
-  video.src = "./videos/00-cuadro.mp4"
-  video.play().then( () => s0.init({src:video, dynamic:true}))
-  
+ s0.initImage("media/img/cuadro3.png")
   src(s0)
   .scrollX(()=> scaler(mouse.x, 0, window.innerWidth, -0.04, 0.04), 0.0)
   .scrollY(()=> scaler(mouse.y, 0, window.innerHeight, -0.04, 0.04), 0.0000)
@@ -278,6 +271,7 @@ function but1() {
   t1.style.color = "red";
 
   video.src = "./videos/1-E01-crf22.mp4"
+  // video.src = "./videos/short.mp4"
   video.play().then( () => s0.init({src:video, dynamic:true}))
 
 
@@ -655,7 +649,7 @@ draw();
 
 function but9() {
   console.log('9 - bd02 - ensamblaje')
-  trackNo = 9 // just to go to but0 (home)
+  trackNo = -1 // just to go to but0 (home)
 
   trackdefaultColor();
   t9.style.color = "red";
