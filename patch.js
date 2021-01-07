@@ -237,9 +237,10 @@ function but0() {
   src(s2)
   .scrollX(()=> scaler(mouse.x, 0, window.innerWidth, -0.5, 0.5), 0.0)
   .scrollY(()=> scaler(mouse.y, 0, window.innerHeight, -0.05, 0.05), 0.0000)
+  .scrollY(0.334, 0)
   .scale( () => scaler(mouse.y, 0, window.innerHeight, 0.7, 0.394), scaler(mouse.y, 0, window.innerHeight, 0.9, 0.507))
   .scale([0.90, 1.10].smooth(1).fast(0.25))
-  // .blend(o2).blend(o2)
+  .blend(o2)
   .out(o2)
 
   
@@ -465,7 +466,7 @@ function but5() {
       .mask(shape([3,6,9,5])
       .scrollX( () => scaler(mouse.x, 0, window.innerWidth, -1, 1) )
       .scrollY( () => scaler(mouse.y, 0, window.innerHeight, -1, 1) )
-      .scale( () => 1.0 + 1.0 * himidFreq, () => 1.0 + 1.0 * himidFreq)
+      .scale( () => 0.25 + 1.0 * himidFreq, () => 1.0 + 0.5 * himidFreq)
       .saturate(1.5)
       // .luma(0.5,0.6)
 
@@ -495,7 +496,7 @@ src(o0)
 
 
 
-render(o)
+render(o0)
 draw();
 
 }
@@ -587,6 +588,7 @@ function but8() {
 
 // VIDEO
   src(s0)
+  // .rotate(Math.PI * 0.5)
   .kaleid(()=>mouse.y*.01+.03)
   .scale( () => scaler(mouse.x, 0, window.innerWidth, 0.25, 1.5), scaler(mouse.x, 0, window.innerWidth, 0.25, 1.5))
   .scrollX(({time})=>4+3*Math.sin(time*.002))
@@ -595,6 +597,7 @@ function but8() {
 
   .saturate(1.5)
   .modulate(o2,.002)
+  
 
   
   .out(o2)
@@ -610,7 +613,7 @@ draw();
 function but9() {
   console.log('9 - bd02 - ensamblaje')
 
-  video.src = "./videos/9-BD02-crf23.mp4"
+  video.src = "./videos/9-BD02-crf22.mp4"
   video.play().then( () => s0.init({src:video, dynamic:true}) )
 
   // osc(({time})=>5.0+2*Math.sin(time*.03),.02)
