@@ -119,9 +119,12 @@ function trackdefaultColor () {
 }
 
 
-// Track buttons
-let trackTitle = document.getElementsByClassName("track-title")[0];
+// Album button
+let albumTitle = document.getElementById("clastic-title");
+albumTitle.addEventListener('click', () => { but0() })
 
+
+// Track buttons
 //  buttonHandler(element, id)
 
 // function buttonHandler (element, id) {
@@ -232,7 +235,8 @@ t9.addEventListener('click', () => {
 // Scenes
 function but0() {
   // console.log('home');
-   
+  trackdefaultColor ()
+  
   s2.initImage("media/img/modelo3.gif")
   src(s2)
   .scrollX(()=> scaler(mouse.x, 0, window.innerWidth, -0.5, 0.5), 0.0)
