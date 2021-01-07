@@ -45,8 +45,10 @@ playButton.addEventListener('click', () => {
 // FULL SCREEN
 document.addEventListener("keypress", function(e) {
   // ENTER goes into full screen
-  if (e.keyCode === 13) {
+  if (e.key === "Enter") {
     toggleFullScreen();
+  } else if (e.key === "m") {
+    mute();
   }
 }, false);
 
