@@ -480,10 +480,11 @@ function but5() {
     src(s0)
       // .thresh(0.3,0.7)
       .contrast(1.1)
-      .mask(shape([3,6,9,5])
+      // .mask(shape([3,6,9,5])
+      .mask(shape([3,6,9,5].fast(140/120))
       .scrollX( () => scaler(mouse.x, 0, window.innerWidth, -1, 1) )
       .scrollY( () => scaler(mouse.y, 0, window.innerHeight, -1, 1) )
-      .scale( () => 0.25 + 1.0 * himidFreq, () => 1.0 + 0.5 * himidFreq)
+      .scale( () => 0.05 + Math.sin(1.166667*time/10) * himidFreq, () => 1.0 + 0.5 * himidFreq)
       .saturate(1.5)
       // .luma(0.5,0.6)
 
