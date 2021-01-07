@@ -73,8 +73,16 @@ function draw() {
     himidFreq = dataArray[3]/255;
     hiFreq = dataArray[4]/255;
     videotimeRemind = video.duration - video.currentTime
-    // AUTOPLAY CONTROL
-    if ( videotimeRemind < 0.1 ) scene[1 + trackNo]()
+    // AUTOPLAY CONTROL if trackNo is 0 (but0) or -1 (but9)
+    if ( videotimeRemind < 0.1 ) {
+      if ( trackNo === 0 || trackNo === 9)  { 
+        scene[0]()
+      }
+      else {
+        scene[trackNo + 1]()
+      }
+    }
+    
 };
 
 
@@ -226,7 +234,10 @@ t9.addEventListener('click', () => {
 // Scenes
 function but0() {
   console.log('home');
+  trackNo = 0;
+
   trackdefaultColor ()
+
 
   s2.initImage("media/img/modelo3.gif")
   src(s2)
@@ -337,16 +348,19 @@ function but2() {
     .modulate(o0,.02)
     .blend(o0)
     .scale(1.02, 1.02)
-    .rotate (()=>mouse.x * .006 + .0002)
+// .rotate (()=>mouse.x * .006 + .0002)
+      .rotate(() => scaler(mouse.x, 0, window.innerWidth, -1.7, 1.7) )
       .modulate(o1)
     // .modulate(o1)
     .out(o0)
 
 
-voronoi(3)
-.modulate(noise(()=>mouse.y/1236*6))
-// .modulateRepeat(o1, .3,.3,()=>mouse.y/1236 * 0.01,()=>mouse.y/1236 * 0.1 )
-.out(o1)
+    voronoi(3)
+    .modulate(noise(()=>mouse.y/1236*6))
+    .scale(() => scaler(mouse.y, 0, window.innerWidth, .4, 1.4) )
+    
+    // .modulateRepeat(o1, .3,.3,()=>mouse.y/1236 * 0.01,()=>mouse.y/1236 * 0.1 )
+    .out(o1)
 
 
   render(o0)
@@ -641,7 +655,7 @@ draw();
 
 function but9() {
   console.log('9 - bd02 - ensamblaje')
-  trackNo = -1 // just to go to but0 (home)
+  trackNo = 9 // just to go to but0 (home)
 
   trackdefaultColor();
   t9.style.color = "red";
@@ -650,12 +664,7 @@ function but9() {
   // video.src = "./videos/short.mp4"
   video.play().then( () => s0.init({src:video, dynamic:true}) )
 
-  // osc(({time})=>5.0+2*Math.sin(time*.03),.02)
-  // .scrollX(() => dataArray[0]/255*4+5 )
-  // .modulateRepeat(o1)
-  // .modulateScale(osc(2,4))
-  // .blend(o0)
-  // .out(o0)
+
 
 
   src(s0)
