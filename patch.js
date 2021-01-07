@@ -61,7 +61,8 @@ function toggleFullScreen() {
   }
 }
 
-
+let trackNo
+scene = [but0, but1, but2, but3, but4, but5, but6, but7, but8, but9]
 
 function draw() {
     drawVisual = requestAnimationFrame(draw);
@@ -72,8 +73,8 @@ function draw() {
     himidFreq = dataArray[3]/255;
     hiFreq = dataArray[4]/255;
     videotimeRemind = video.duration - video.currentTime
-    // console.log("mX: " + mouse.x +  " | " + norm(mouse.x, 0, window.innerWidth))
-    if ( videotimeRemind < 0.1 ) but0()
+    // AUTOPLAY CONTROL
+    if ( videotimeRemind < 0.1 ) scene[1 + trackNo]()
 };
 
 
@@ -151,8 +152,6 @@ let t1 = document.getElementById('but1')
 t1.addEventListener('mouseover', () => { t1.style.textDecoration = "line-through"; })
 t1.addEventListener('mouseleave', () => { t1.style.textDecoration = "none"; })
 t1.addEventListener('click', () => { 
-  trackdefaultColor();
-  t1.style.color = "red";
   but1(); 
 })
 
@@ -160,7 +159,6 @@ let t2 = document.getElementById('but2')
 t2.addEventListener('mouseover', () => { t2.style.textDecoration = "line-through"; })
 t2.addEventListener('mouseleave', () => { t2.style.textDecoration = "none"; })
 t2.addEventListener('click', () => { 
-  trackdefaultColor();
   t2.style.color = "red";
   but2(); 
 })
@@ -169,7 +167,6 @@ let t3 = document.getElementById('but3')
 t3.addEventListener('mouseover', () => { t3.style.textDecoration = "line-through"; })
 t3.addEventListener('mouseleave', () => { t3.style.textDecoration = "none"; })
 t3.addEventListener('click', () => { 
-  trackdefaultColor();
   t3.style.color = "red";
   but3(); 
 })
@@ -178,7 +175,6 @@ let t4 = document.getElementById('but4')
 t4.addEventListener('mouseover', () => { t4.style.textDecoration = "line-through"; })
 t4.addEventListener('mouseleave', () => { t4.style.textDecoration = "none"; })
 t4.addEventListener('click', () => { 
-  trackdefaultColor();
   t4.style.color = "red";
   but4(); 
 })
@@ -187,7 +183,6 @@ let t5 = document.getElementById('but5')
 t5.addEventListener('mouseover', () => { t5.style.textDecoration = "line-through"; })
 t5.addEventListener('mouseleave', () => { t5.style.textDecoration = "none"; })
 t5.addEventListener('click', () => { 
-  trackdefaultColor();
   t5.style.color = "red";
   but5(); 
 })
@@ -196,7 +191,6 @@ let t6 = document.getElementById('but6')
 t6.addEventListener('mouseover', () => { t6.style.textDecoration = "line-through"; })
 t6.addEventListener('mouseleave', () => { t6.style.textDecoration = "none"; })
 t6.addEventListener('click', () => { 
-  trackdefaultColor();
   t6.style.color = "red";
   but6(); 
 })
@@ -205,7 +199,6 @@ let t7 = document.getElementById('but7')
 t7.addEventListener('mouseover', () => { t7.style.textDecoration = "line-through"; })
 t7.addEventListener('mouseleave', () => { t7.style.textDecoration = "none"; })
 t7.addEventListener('click', () => { 
-  trackdefaultColor();
   t7.style.color = "red";
   but7(); 
 })
@@ -214,7 +207,6 @@ let t8 = document.getElementById('but8')
 t8.addEventListener('mouseover', () => { t8.style.textDecoration = "line-through"; })
 t8.addEventListener('mouseleave', () => { t8.style.textDecoration = "none"; })
 t8.addEventListener('click', () => { 
-  trackdefaultColor();
   t8.style.color = "red";
   but8(); 
 })
@@ -223,7 +215,6 @@ let t9 = document.getElementById('but9')
 t9.addEventListener('mouseover', () => { t9.style.textDecoration = "line-through"; })
 t9.addEventListener('mouseleave', () => { t9.style.textDecoration = "none"; })
 t9.addEventListener('click', () => { 
-  trackdefaultColor();
   t9.style.color = "red";
   but9(); 
 })
@@ -234,16 +225,17 @@ t9.addEventListener('click', () => {
 
 // Scenes
 function but0() {
-  // console.log('home');
+  console.log('home');
   trackdefaultColor ()
-  
+
   s2.initImage("media/img/modelo3.gif")
   src(s2)
   .scrollX(()=> scaler(mouse.x, 0, window.innerWidth, -0.5, 0.5), 0.0)
   .scrollY(()=> scaler(mouse.y, 0, window.innerHeight, -0.05, 0.05), 0.0000)
   .scrollY(0.334, 0)
   .scale( () => scaler(mouse.y, 0, window.innerHeight, 0.7, 0.394), scaler(mouse.y, 0, window.innerHeight, 0.9, 0.507))
-  .scale([0.90, 1.10].smooth(1).fast(0.25))
+  // .scale([0.90, 1.10].smooth(1).fast(0.25))
+  .scale( () => 1.05 + 0.1 * Math.sin(0.25*time) )
   .blend(o2)
   .out(o2)
 
@@ -255,7 +247,8 @@ function but0() {
   .scrollX(()=> scaler(mouse.x, 0, window.innerWidth, -0.04, 0.04), 0.0)
   .scrollY(()=> scaler(mouse.y, 0, window.innerHeight, -0.04, 0.04), 0.0000)
   .scale(()=> scaler(mouse.x, 0, window.innerWidth, 0.8, 1.2))
-  .scale([1.05,0.95].smooth(1).fast(0.25))
+  // .scale([1.05,0.95].smooth(1).fast(0.25))
+  .scale( () => 1.05 - 0.1 * Math.sin(0.25*time) )
 
   .layer(o2).blend(o0)
   .out(o0)
@@ -268,6 +261,10 @@ function but0() {
 
 function but1() {
   console.log('1 - e01 - window')
+  trackNo = 1
+
+  trackdefaultColor();
+  t1.style.color = "red";
 
   video.src = "./videos/1-E01-crf22.mp4"
   video.play().then( () => s0.init({src:video, dynamic:true}))
@@ -322,6 +319,10 @@ function but1() {
 
 function but2() {
   console.log('2 - bd08 - flesh')
+  trackNo = 2
+
+  trackdefaultColor();
+  t2.style.color = "red";
 
   video.src = "./videos/2-BD08-crf23.mp4"
   video.play().then( () => s0.init({src:video, dynamic:true}) )
@@ -354,6 +355,10 @@ voronoi(3)
 
 function but3() {
   console.log('3 - bd07 - salt')
+  trackNo = 3
+
+  trackdefaultColor();
+  t3.style.color = "red";
 
   video.src = "./videos/3-BD07-crf23.mp4"
   video.play().then( () => s0.init({src:video, dynamic:true}) )
@@ -405,6 +410,10 @@ draw();
 
 function but4() {
   console.log('4 - e02 - mass')
+  trackNo = 4
+  
+  trackdefaultColor();
+  t4.style.color = "red";
 
   video.src = "./videos/4-E02-crf22.mp4"
   video.play().then( () => s0.init({src:video, dynamic:true}) )
@@ -458,6 +467,10 @@ function but4() {
 
 function but5() {
   console.log('5 - clastic - melt')
+  trackNo = 5
+
+  trackdefaultColor();
+  t5.style.color = "red";
 
   video.src = "./videos/5-CLASTIC-crf22.mp4"
   video.play().then( () => s0.init({src:video, dynamic:true}) )
@@ -507,6 +520,10 @@ draw();
 
 function but6() {
   console.log('6 - fall in sync - ripples')
+  trackNo = 6
+
+  trackdefaultColor();
+  t6.style.color = "red";
 
   video.src = "./videos/6-FALL-crf23.mp4"
   video.play().then( () => s0.init({src:video, dynamic:true}) )
@@ -547,6 +564,10 @@ function but6() {
 
 function but7() {
   console.log('7 - telematic - copper')
+  trackNo = 7
+
+  trackdefaultColor();
+  t7.style.color = "red";
 
   video.src = "./videos/7-TELEMATIC_crf23.mp4"
   video.play().then( () => s0.init({src:video, dynamic:true}) )
@@ -575,9 +596,12 @@ function but7() {
 
 function but8() {
   console.log('8 - bd01 - asociaciones')
+  trackNo = 8
+
+  trackdefaultColor();
+  t8.style.color = "red";
 
   video.src = "./videos/8-BD01-crf23.mp4"
-  //  "./videos/9-BD02-crf23.mp4"
   video.play().then( () => s0.init({src:video, dynamic:true}) )
 
 // AGUA
@@ -616,8 +640,13 @@ draw();
 
 function but9() {
   console.log('9 - bd02 - ensamblaje')
+  trackNo = -1 // just to go to but0 (home)
+
+  trackdefaultColor();
+  t9.style.color = "red";
 
   video.src = "./videos/9-BD02-crf22.mp4"
+  // video.src = "./videos/short.mp4"
   video.play().then( () => s0.init({src:video, dynamic:true}) )
 
   // osc(({time})=>5.0+2*Math.sin(time*.03),.02)
