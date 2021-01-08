@@ -27,15 +27,16 @@ const playButton = document.getElementById('audio');
 playButton.addEventListener('click', () => {
 
   toggleFullScreen();
-    const context = new ( AudioContext || webkitAudioContext )();
-    analyser = context.createAnalyser();
-    source = context.createMediaElementSource(video);
-    
-    source.connect(analyser);
-    analyser.connect(context.destination);
-    
-    analyser.fftSize = 32;
-    dataArray = new Uint8Array(analyser.frequencyBinCount);
+  document.getElementById('clastic-title').innerText = "CLASTIC MUSIC";
+  const context = new ( AudioContext || webkitAudioContext )();
+  analyser = context.createAnalyser();
+  source = context.createMediaElementSource(video);
+  
+  source.connect(analyser);
+  analyser.connect(context.destination);
+  
+  analyser.fftSize = 32;
+  dataArray = new Uint8Array(analyser.frequencyBinCount);
   
   }
 );
