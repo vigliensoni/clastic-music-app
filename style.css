@@ -53,6 +53,15 @@ font-family:/* monospace */'Syne', sans-serif;
     text-align: center;
 }
 
+.info_warning {
+    
+  font-family:/* monospace */'Syne', sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      text-align: center;
+      color:rgb(233, 131, 131)
+
+    }
 
 .playbutton {
     font-family: 'Syne';
