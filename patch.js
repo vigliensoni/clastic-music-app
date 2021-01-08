@@ -93,13 +93,15 @@ function mute(){
     console.log('I will mute it');
     muted = true;
     video.muted = muted;
-    muteButton.innerText="Unmute";
+    // muteButton.innerText="Unmute";
+    muteButton.getElementsByTagName('img')[0].src = "media/icons/muted-no-audio-50.png"
   }  
   else {
     console.log('I will unmute it');
     muted = false;
     video.muted = muted;
-    muteButton.innerText="Mute";
+    // muteButton.innerText="Mute";
+    muteButton.getElementsByTagName('img')[0].src = "media/icons/unmuted-audio-50.png"
   }
 };
 
