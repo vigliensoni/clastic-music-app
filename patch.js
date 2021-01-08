@@ -94,14 +94,14 @@ function mute(){
     muted = true;
     video.muted = muted;
     // muteButton.innerText="Unmute";
-    muteButton.getElementsByTagName('img')[0].src = "media/icons/muted-no-audio-50.png"
+    muteButton.getElementsByTagName('img')[0].src = "media/icons/no-audio-50.png"
   }  
   else {
     console.log('I will unmute it');
     muted = false;
     video.muted = muted;
     // muteButton.innerText="Mute";
-    muteButton.getElementsByTagName('img')[0].src = "media/icons/unmuted-audio-50.png"
+    muteButton.getElementsByTagName('img')[0].src = "media/icons/audio-50.png"
   }
 };
 
