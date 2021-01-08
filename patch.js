@@ -42,7 +42,6 @@ playButton.addEventListener('click', () => {
 );
 
 
-
 // FULL SCREEN
 document.addEventListener("keypress", function(e) {
   // ENTER goes into full screen
@@ -50,7 +49,25 @@ document.addEventListener("keypress", function(e) {
     toggleFullScreen();
   } else if (e.key === "m") {
     mute();
+  // } else if (e.key === "v") {
+  //   if (video.paused) {
+  //     video.play();
+  //   }
+  //   else {
+  //     video.pause();
+  //   }
+  // } else if (e.key === "1") {
+  //   render(o0)
+  // } else if (e.key === "2") {
+  //   render(o1)
+  // } else if (e.key === "3") {
+  //   render(o2)
+  // } else if (e.key === "4") {
+  //   render(o3) 
+  // } else if (e.key === "0") {
+  //   render()
   }
+
 }, false);
 
 function toggleFullScreen() {
@@ -334,35 +351,43 @@ function but2() {
   trackdefaultColor();
   t2.style.color = "red";
 
-  video.src = "./videos/2-BD08-crf23.mp4"
+  video.src = "./videos/2-BD08-crf22.mp4"
   video.play().then( () => s0.init({src:video, dynamic:true}) )
 
 
   src(s0)
-    .scale(()=>dataArray[1]/255*1.1+.2)
-    // .contrast(1.3)
-    .saturate(()=>dataArray[3]/255* 2 + 0.2)
-
-    // .rotate(({time})=> 6+time*.1)
-    .modulate(o0,.02)
-    .blend(o0)
-    .scale(1.02, 1.02)
-// .rotate (()=>mouse.x * .006 + .0002)
-      .rotate(() => scaler(mouse.x, 0, window.innerWidth, -1.7, 1.7) )
-      .modulate(o1)
-    // .modulate(o1)
-    .out(o0)
+  .scale(()=>dataArray[1]/255*1.1+.2)
+  .contrast(1.3)
+  // .saturate(1.5)
+  .saturate(()=>dataArray[3]/255* 2 + 0.2)
 
 
-    voronoi(3)
-    .modulate(noise(()=>mouse.y/1236*6))
-    .scale(() => scaler(mouse.y, 0, window.innerWidth, .4, 1.4) )
-    
-    // .modulateRepeat(o1, .3,.3,()=>mouse.y/1236 * 0.01,()=>mouse.y/1236 * 0.1 )
-    .out(o1)
+  // .rotate(({time})=> 6+time*.1)
+  .modulate(o0, () => scaler(mouse.y, 0, windor.innerHeight, 0, 0.5))
+  .blend(o0)
+  .scale(1.02, 1.02)
+  // .rotate (()=>mouse.x * .006 + .0002)
+  .rotate(() => scaler(mouse.x, 0, window.innerWidth, -1.7, 1.7) )
+    .modulate(o1)
+  // .modulate(o1)
+  .out(o0)
 
 
-  render(o0)
+
+  shape(4, 4, 0).scale(0.5,0.5)
+  // .scrollY(() => scaler(mouse.y, 0, window.innerWidth, .4, .4).scale(1.02) )
+
+  .diff(src(o1).scale(0.999).rotate(() => scaler(mouse.y, 0, window.innerWidth, 0, 4)))
+  .repeat(1.08,1)
+  .blend(src(o1), () => scaler(mouse.y, 0, window.innerHeight, 0, 5))
+  .add(src(o1).scrollY(-0.001),0.3)
+
+  .modulateScale(src(o0),-0.005)
+  .blend(o0).blend(o0).blend(o0).blend(o0)
+  .out(o1)
+
+
+  render(o1)
   draw();
 }
 
