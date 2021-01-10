@@ -24,6 +24,7 @@ let hiFreq;
 
 // Play
 const playButton = document.getElementById('audio');
+
 playButton.addEventListener('click', () => {
 
   toggleFullScreen();
@@ -37,7 +38,8 @@ playButton.addEventListener('click', () => {
   
   analyser.fftSize = 32;
   dataArray = new Uint8Array(analyser.frequencyBinCount);
-  
+  trackdefaultColor();
+  but0(); 
   }
 );
 
@@ -160,11 +162,11 @@ albumTitle.addEventListener('click', () => { but0() })
 //   element.addEventListener('click', () => { 
 //     trackdefaultColor();
 //     element.style.color = "red";
-//     but1(); 
+//     scene[id]
 //   })
 // } 
 
-let t0 = document.getElementById('audio')
+let t0 = document.getElementById('clastic-title')
 // t1.addEventListener('mouseover', () => { t1.style.textDecoration = "line-through"; })
 // t1.addEventListener('mouseleave', () => { t1.style.textDecoration = "none"; })
 t0.addEventListener('click', () => { 
@@ -267,7 +269,17 @@ function but0() {
   .blend(o2)
   .out(o2)
 
-  
+ s1.initImage("media/img/chooseasong.png")
+ src(s1)
+
+// .color(1,0,0)
+// .add(src(s1).color(0,1,0).scrollX(() => 0.005 * Math.sin(1*time) * Math.sin(5*time)))
+// .add(src(s1).color(0,0,1).scrollX(() => -0.005 * Math.sin(1*time) * Math.sin(5*time)))
+.scrollY(1.1, -0.01)
+// .blend(o1).blend(o1)
+ .out(o1)
+ 
+
  s0.initImage("media/img/cuadro3.png")
   src(s0)
   .scrollX(()=> scaler(mouse.x, 0, window.innerWidth, -0.04, 0.04), 0.0)
@@ -277,6 +289,7 @@ function but0() {
   .scale( () => 1.05 - 0.1 * Math.sin(0.25*time) )
 
   .layer(o2).blend(o0)
+  .layer(o1).blend(o0)
   .out(o0)
   render(o0)
   
