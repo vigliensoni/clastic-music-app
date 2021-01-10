@@ -109,7 +109,7 @@ let muted = false;
 muteButton.addEventListener('click', () => mute() );
 
 function mute(){
-  if ( muted == false ) {
+  if ( muted === false ) {
     console.log('I will mute it');
     muted = true;
     video.muted = muted;
@@ -153,11 +153,9 @@ let albumTitle = document.getElementById("clastic-title");
 albumTitle.addEventListener('click', () => { but0() })
 
 
-// Track buttons
-//  buttonHandler(element, id)
+
 
 function buttonHandler (element, id) {
-  console.log(id, element);
   element.addEventListener('mouseover', () => { element.style.textDecoration = "line-through"; })
   element.addEventListener('mouseleave', () => { element.style.textDecoration = "none"; })
   element.addEventListener('click', () => { 
