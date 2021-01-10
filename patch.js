@@ -110,17 +110,15 @@ muteButton.addEventListener('click', () => mute() );
 
 function mute(){
   if ( muted === false ) {
-    console.log('I will mute it');
+    // console.log('Muted');
     muted = true;
     video.muted = muted;
-    // muteButton.innerText="Unmute";
     muteButton.getElementsByTagName('img')[0].src = "media/icons/no-audio-50.png"
   }  
   else {
-    console.log('I will unmute it');
+    // console.log('Unmuted');
     muted = false;
     video.muted = muted;
-    // muteButton.innerText="Mute";
     muteButton.getElementsByTagName('img')[0].src = "media/icons/audio-50.png"
   }
 };
@@ -178,12 +176,9 @@ let t9 = document.getElementById('but9'); buttonHandler (t9, 9)
 
 
 
-
-
-
 // Scenes
 function but0() {
-  console.log('home');
+  // console.log('home');
   // trackNo = 0;
 
   trackdefaultColor ()
@@ -230,14 +225,13 @@ function but0() {
 
 
 function but1() {
-  console.log('1 - e01 - window')
+  // console.log('1 - siltstone')
   trackNo = 1
 
   trackdefaultColor();
   t1.style.color = "red";
 
   video.src = "./videos/1-E01-crf22.mp4"
-  // video.src = "./videos/short.mp4"
   video.play().then( () => s0.init({src:video, dynamic:true}))
 
 
@@ -289,7 +283,7 @@ function but1() {
   }
 
 function but2() {
-  console.log('2 - bd08 - flesh')
+  // console.log('2 - breccia')
   trackNo = 2
 
   trackdefaultColor();
@@ -336,7 +330,7 @@ function but2() {
 }
 
 function but3() {
-  console.log('3 - bd07 - salt')
+  // console.log('3 - ooze')
   trackNo = 3
 
   trackdefaultColor();
@@ -391,7 +385,7 @@ draw();
 }
 
 function but4() {
-  console.log('4 - e02 - mass')
+  // console.log('4 - claystone')
   trackNo = 4
   
   trackdefaultColor();
@@ -448,7 +442,7 @@ function but4() {
 }
 
 function but5() {
-  console.log('5 - clastic - melt')
+  // console.log('5 - clastic')
   trackNo = 5
 
   trackdefaultColor();
@@ -502,13 +496,13 @@ draw();
 }
 
 function but6() {
-  console.log('6 - fall in sync - ripples')
+  // console.log('6 - fall in sync')
   trackNo = 6
 
   trackdefaultColor();
   t6.style.color = "red";
 
-  video.src = "./videos/6-FALL-crf23.mp4"
+  video.src = "./videos/6-FALL-crf22.mp4"
   video.play().then( () => s0.init({src:video, dynamic:true}) )
 
   src(s0)
@@ -546,13 +540,13 @@ function but6() {
 }
 
 function but7() {
-  console.log('7 - telematic - copper')
+  // console.log('7 - telematic')
   trackNo = 7
 
   trackdefaultColor();
   t7.style.color = "red";
 
-  video.src = "./videos/7-TELEMATIC_crf23.mp4"
+  video.src = "./videos/7-TELEMATIC-crf22.mp4"
   video.play().then( () => s0.init({src:video, dynamic:true}) )
 
   src(s0)
@@ -578,13 +572,13 @@ function but7() {
 }
 
 function but8() {
-  console.log('8 - bd01 - asociaciones')
+  console.log('8 - sandstone')
   trackNo = 8
 
   trackdefaultColor();
   t8.style.color = "red";
 
-  video.src = "./videos/8-BD01-crf23.mp4"
+  video.src = "./videos/8-BD01-crf22.mp4"
   video.play().then( () => s0.init({src:video, dynamic:true}) )
 
 // AGUA
@@ -622,7 +616,7 @@ draw();
 
 
 function but9() {
-  console.log('9 - bd02 - ensamblaje')
+  // console.log('9 - shale')
   trackNo = -1 // just to go to but0 (home)
 
   trackdefaultColor();
