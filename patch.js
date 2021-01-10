@@ -234,53 +234,32 @@ function but1() {
   video.src = "./videos/1-E01-crf22.mp4"
   video.play().then( () => s0.init({src:video, dynamic:true}))
 
-
   solid(1,1,1)
   .layer(osc(500).modulateScale(
       shape(100, () => Math.cos(time * 0.5), 1)
-        .scale(1.1, 0.6),
-        // .r(),
-      1,
-      1,
-      () => (time * 1) % 2
-    )).modulate(noise(4).scale(1.5,0.8,2).modulateScale(
-      shape(100, () => Math.sin(time * 0.5), 1)
-        .scale(1.1, 0.6),
-        // .r(),
-      -0.5,
-      2,
-      () => (time * 1) % 2
-    ))
+        .scale(1.1, 0.6), 1, 1, () => (time * 1) % 2))
+        .modulate(noise(4).scale(1.5,0.8,2).modulateScale( shape(100, () => Math.sin(time * 0.5), 1 )
+        .scale(1.1, 0.6), -0.5, 2, () => (time * 1) % 2))
   .out()
 
+  voronoi(()=>mouse.x/24 * .5,()=> midFreq*3+90,0)
+  .mult(osc(3,()=> midFreq * 3 + 1.1,()=>Math.sin(time/15)*.3+.08).saturate(4).kaleid(200))
+  .mult(o0).modulate(o1,0.5)
+  .modulate(s0)
+  .add(o1,0.8)
+  .scrollY(-0.05)
+  .scale(0.99)
+  .modulate(o1)
+  .modulate(noise(()=>Math.sin(time)*.07+.2),()=>Math.sin(time)*.02+.1)
+  .blend(s0, () => himidFreq * 35)
+  .blend(o2).blend(o2).blend(o2).blend(o2).blend(o2).blend(o2)
+  .scrollX(()=> scaler(mouse.x, 0, window.innerWidth, -0.05, 0.05), 0.0000)
+  .scrollY(()=> scaler(mouse.y, 0, window.innerHeight, -0.05, 0.05), 0.0000)
+  .out(o2)
 
-
-    voronoi(()=>mouse.x/24 * .5,()=> midFreq*3+90,0)
-    .mult(osc(3,()=> midFreq * 3 + 1.1,()=>Math.sin(time/15)*.3+.08).saturate(4).kaleid(200))
-    .mult(o0).modulate(o1,0.5)
-    .modulate(s0)
-    .add(o1,0.8)
-    .scrollY(-0.05)
-    .scale(0.99)
-    .modulate(o1)
-    .modulate(noise(()=>Math.sin(time)*.07+.2),()=>Math.sin(time)*.02+.1)
-
-    
-    .blend(s0, () => himidFreq * 35)
-    .blend(o2).blend(o2).blend(o2).blend(o2).blend(o2).blend(o2)
-
-    .scrollX(()=> scaler(mouse.x, 0, window.innerWidth, -0.05, 0.05), 0.0000)
-    .scrollY(()=> scaler(mouse.y, 0, window.innerHeight, -0.05, 0.05), 0.0000)
-    
-
-    .out(o2)
-
-    render(o2)
-
-
-
+  render(o2)
   draw();
-  }
+}
 
 function but2() {
   // console.log('2 - breccia')
@@ -292,38 +271,25 @@ function but2() {
   video.src = "./videos/2-BD08-crf22.mp4"
   video.play().then( () => s0.init({src:video, dynamic:true}) )
 
-
   src(s0)
   .scale(()=>dataArray[1]/255*1.1+.2)
   .contrast(1.3)
-  // .saturate(1.5)
   .saturate(()=>dataArray[3]/255* 2 + 0.2)
-
-
-  // .rotate(({time})=> 6+time*.1)
   .modulate(o0, () => scaler(mouse.y, 0, windor.innerHeight, 0, 0.5))
   .blend(o0)
   .scale(1.02, 1.02)
-  // .rotate (()=>mouse.x * .006 + .0002)
   .rotate(() => scaler(mouse.x, 0, window.innerWidth, -1.7, 1.7) )
-    .modulate(o1)
-  // .modulate(o1)
+  .modulate(o1)
   .out(o0)
 
-
-
   shape(4, 4, 0).scale(0.5,0.5)
-  // .scrollY(() => scaler(mouse.y, 0, window.innerWidth, .4, .4).scale(1.02) )
-
   .diff(src(o1).scale(0.999).rotate(() => scaler(mouse.y, 0, window.innerWidth, 0, 4)))
   .repeat(1.08,1)
   .blend(src(o1), () => scaler(mouse.y, 0, window.innerHeight, 0, 5))
   .add(src(o1).scrollY(-0.001),0.3)
-
   .modulateScale(src(o0),-0.005)
   .blend(o0).blend(o0).blend(o0).blend(o0)
   .out(o1)
-
 
   render(o1)
   draw();
@@ -340,48 +306,32 @@ function but3() {
   video.play().then( () => s0.init({src:video, dynamic:true}) )
 
   src(s0)
-  // .saturate(.4)
-  // .brightness (.6)
-  // .contrast(1.6)
-  // .rotate(()=>dataArray[3]*2)
-
   .scale(()=>dataArray[1]/255*.1+1)
-  // .rotate(({time})=>5+2*Math.sin(time*.03),.01)
   .modulate((o2), ()=> dataArray[3]/255*2)
   .blend(o0)
   .out(o0)
 
-   shape(99,.15,.5).color(0,1,2)
-  .diff( shape(5,.5,0).scrollX(.05).scale( () => dataArray[3]/255*2+.8).rotate( () => dataArray[3]/255*4+4).color (() =>  .1 + mouse.x * 0.0005,0 + mouse.x * 0.0005),.5 + mouse.x * 0.0005).color(.1,.2,.5)
-  .diff( shape(3,.4,.002).scrollX(.10).scale( () => dataArray[1]/255*-2,.8).rotate( ()=> dataArray[1]/255*-1.2-2).rotate(() => Math.sin(time)+1*-2).color(.1,0,.5) )
-  .diff( shape(5,.3,.002).scrollX(.15).scale( () => dataArray[0]/255*2+.8).rotate( ()=> dataArray[3]/255*8+1).rotate(() => Math.sin(time)+3*2).color(.1,0.1,.5) )
-  .diff( shape(5,.2,.002).scrollX(.20).scale( () => dataArray[3]/255*-2+1.8).rotate( ()=>dataArray[3]/255*-4-4).rotate(() => Math.sin(time)-1*-2).color(.3,0,.3) )
+  shape(99,.15,.5).color(0,1,2)
+  .diff( shape(5,.5,0).scrollX(.05).scale( () => dataArray[3]/255*2+.8).rotate( () => dataArray[3]/255*4+4).color (() => 0.1 + mouse.x * 0.0005,0 + mouse.x * 0.0005),.5 + mouse.x * 0.0005).color(.1,.2,.5)
+  .diff( shape(3,.4,.002).scrollX(.10).scale( () => dataArray[1]/255*-2,.8).rotate( () => dataArray[1]/255*-1.2-2).rotate(() => Math.sin(time)+1*-2).color(.1,0,.5) )
+  .diff( shape(5,.3,.002).scrollX(.15).scale( () => dataArray[0]/255*2+.8).rotate( () => dataArray[3]/255*8+1).rotate(() => Math.sin(time)+3*2).color(.1,0.1,.5) )
+  .diff( shape(5,.2,.002).scrollX(.20).scale( () => dataArray[3]/255*-2+1.8).rotate( () =>dataArray[3]/255*-4-4).rotate(() => Math.sin(time)-1*-2).color(.3,0,.3) )
   .diff( shape(6,.1,.002).scrollX(.25).rotate( ()=>time/50 ).color(.1,0,.5) )
-
-  .modulateScale(
-    shape(3,.5,0).scrollX(.05).rotate( ()=>time/10 ), ()=>(Math.sin(time/3)*.2)+.2 )
+  .modulateScale( shape(3,.5,0).scrollX(.05).rotate( () => time/10 ), () => (Math.sin(time/3)*.2)+.2 )
   .scale(0.2, () => (1.05 + 0.1 * Math.sin(0.05*time)))
   .scale(()=> 0.7 + mouse.y * 0.0045,.6,1)
   .modulate(o2,.1)
-  .mult(gradient(({time})=>0.2+.2*Math.sin(time*.03),({time})=>0.05+1*Math.sin(time*.01),({time})=>0.3+2*Math.sin(time*.05)))
- .saturate(()=> -.2 + mouse.x * .0008)
-
+  .mult(gradient(({time}) => 0.2+.2*Math.sin(time*.03), ({time}) => 0.05+1*Math.sin(time*.01),({time}) => 0.3+2*Math.sin(time*.05)))
+  .saturate(() => -0.2 + mouse.x * .0008)
   .out(o2)
 
   src(o0)
   .diff(o2,.7)
   .modulateRotate(o0,.01)
-  // .invert()
   .out(o3)
 
-// src(s0)
-// .out(o1)
-
   render(o3)
-
-
-draw();
-
+  draw();
 }
 
 function but4() {
@@ -394,9 +344,7 @@ function but4() {
   video.src = "./videos/4-E02-crf22.mp4"
   video.play().then( () => s0.init({src:video, dynamic:true}) )
 
-
   src(s0)
-  // .rotate (.1,() => Math.sin(time * 0.00008))
   .scale(1.4)
   .scale(  () => dataArray[3]/255*1+.2 )
   .add(o1,0.1)
@@ -404,41 +352,25 @@ function but4() {
   .blend(o0)
   .modulate(o2,.03)
   .modulate(o1, .5)
-  // .modulate(o1, .03)
   .out(o0)
-
-
 
   src(s0)
   .mult(osc([950,-950]
-    .smooth(1).fast(.15),0.013)
-    .contrast(14)
-    .brightness(-6))
+  .smooth(1).fast(.15),0.013)
+  .contrast(14)
+  .brightness(-6))
   .modulate(o2,.5)
   .out(o1)
 
-
-
   src(s0)
-
   shape(() => Math.sin(time)+1*3, () => mouse.y/1236*0.8+.18,.01)
-  .repeat(()=>mouse.x/1236*3+1,3, ()=>dataArray[0]/255*2+1, ()=>dataArray[1]/255*5)
-  .scrollY(.5,()=>dataArray[4]/255 * .005 + 0.01)
-  .layer(
-    src(o1)
-    .mask(o0)
-    .luma(.01, .1)
-    .invert(.2)
-  )
-
+  .repeat(() => mouse.x/1236*3+1,3, () => dataArray[0]/255*2+1, () => dataArray[1]/255*5)
+  .scrollY(.5,() => dataArray[4]/255 * .005 + 0.01)
+  .layer(src(o1).mask(o0).luma(.01, 0.1).invert(0.2))
   .out(o2)
-
-
-
 
   render(o1)
   draw();
-
 }
 
 function but5() {
@@ -454,45 +386,28 @@ function but5() {
   src(o0)
   .layer(
     src(s0)
-      // .thresh(0.3,0.7)
       .contrast(1.1)
-      // .mask(shape([3,6,9,5])
       .mask(shape([3,6,9,5].fast(140/120))
       .scrollX( () => scaler(mouse.x, 0, window.innerWidth, -1, 1) )
       .scrollY( () => scaler(mouse.y, 0, window.innerHeight, -1, 1) )
       .scale( () => 0.05 + Math.sin(1.166667*time/10) * himidFreq, () => 1.0 + 0.5 * himidFreq)
       .saturate(1.5)
-      // .luma(0.5,0.6)
-
-)
-  )
+      )
+      )
   .scale(1.01)
   .out(o0)
 
+  voronoi(2, 0.3, 0.2).shift(0.5)
+  .scale(() => 1 + (Math.sin(time*.25)*0.05))
+  .scale( () => scaler(mouse.x, 0, window.innerWidth, 1.5, 3.5), () => scaler(mouse.x, 0, window.innerWidth, 1.5, 3.0))
+  .out(o1)
 
+  src(o0)
+  .modulate(o1, .4)
+  .out(o3)
 
-voronoi(2,0.3,0.2).shift(0.5)
-.scale(()=>1+(Math.sin(time*.25)*0.05))
-.scale( () => scaler(mouse.x, 0, window.innerWidth, 1.5, 3.5), () => scaler(mouse.x, 0, window.innerWidth, 1.5, 3.0))
-
-.out(o1)
-
-
-
-
-
-src(o0)
-// .mask(o1,.4)
-// .modulateHue(o0,()=>dataArray[1]/255*.1+1)
-// .luma(.1)
- .modulate(o1, .4)
-.out(o3)
-
-
-
-render(o0)
-draw();
-
+  render(o0)
+  draw();
 }
 
 function but6() {
@@ -506,37 +421,32 @@ function but6() {
   video.play().then( () => s0.init({src:video, dynamic:true}) )
 
   src(s0)
-    // .saturate(0.15)
-    // .contrast(3)
-    .add(src(o0)
-          .scrollX([0.05,-0.05].fast(0.03).smooth(1))
-          .scale([1.03,1.03].fast(0.3).smooth(1),[1.05,0.9,1].fast(0.29).smooth(1)),0.85)
-          // .blend(o0)
-
-    .out(o0)
+  .add(
+    src(o0)
+    .scrollX([0.05,-0.05].fast(0.03).smooth(1))
+  .scale([1.03,1.03].fast(0.3).smooth(1),[1.05,0.9,1].fast(0.29).smooth(1)),0.85)
+  .out(o0)
 
   osc(7)
-    .posterize (() => (.2 + mouse.x * 0.006)+1)
-    .modulate(noise(()=>dataArray[3]/255*3+1.5))
-    .out(o1)
+  .posterize ( () => (.2 + mouse.x * 0.006) + 1 )
+  .modulate( noise(() => dataArray[3]/255*3+1.5) )
+  .out(o1)
 
-  voronoi(()=>Math.sin(time*.01)*1.2+5, ()=>mouse.y * .0004+.05, 100)
-    .scrollX(({time})=>Math.sin(time*.05)*-0.7-1)
-    .scrollX(()=>dataArray[0]/255*-.3)
-    .colorama(1)
-    .diff(o1)
-    .thresh()
-    .out(o2)
+  voronoi( () => Math.sin(time*.01)*1.2+5, () => mouse.y * .0004+.05, 100 )
+  .scrollX( ({time}) => Math.sin(time*.05) * (-0.7) - 1 )
+  .scrollX( () => dataArray[0]/255*(-0.3) )
+  .colorama(1)
+  .diff(o1)
+  .thresh()
+  .out(o2)
 
-  src(o0 )
+  src(o0)
   .modulate(o0)
-    // .modulateRotate(o0)
-    .modulate(o2,.1)
-    .out(o3)
+  .modulate(o2,.1)
+  .out(o3)
 
   render(o3)
   draw();
-
 }
 
 function but7() {
@@ -550,25 +460,20 @@ function but7() {
   video.play().then( () => s0.init({src:video, dynamic:true}) )
 
   src(s0)
-
-  .scale(()=> dataArray[2]/255*.2+1)
-  .color(()=>Math.sin(time*0.03),()=>Math.sin(time*0.17),()=>Math.sin(time*0.07))
-  // .rotate(()=>mouse.x*.0003+.000001,Math.sin(time) )
-  .color(()=>mouse.y * 0.001,()=>mouse.y * 0.0008)
-  .brightness(()=>mouse.x * .00015 + 0.0000001)
-
+  .scale( () => dataArray[2]/255 * 0.2 + 1 )
+  .color( () => Math.sin(time*0.03),() => Math.sin(time*0.17),() => Math.sin(time*0.07) )
+  .color( () => mouse.y * 0.001,() => mouse.y * 0.0008 )
+  .brightness( () => mouse.x * 0.00015 + 0.0000001 )
   .out(o0)
 
   src(o0)
   .diff(src(o3)
   .scrollY(0, [-.0001, 0.04].fast(0.004)))
   .brightness([-0.029, -.17].smooth().fast(0.21))
-
   .out(o3)
 
   render(o3)
   draw();
-
 }
 
 function but8() {
@@ -582,34 +487,26 @@ function but8() {
   video.play().then( () => s0.init({src:video, dynamic:true}) )
 
 // AGUA
-  osc(0.50,1.25).mult(shape(12,20.09).rotate(()=>Math.random()*15))
-    .diff(osc(() => loFreq ))
-    .add(shape(3,22).rotate(()=>Math.random()*15).blend(gradient(1.6)))
-    .modulate(noise(6)
-              .modulate(noise(2).scrollY(()=> himidFreq * 5, 0.0625)))
-    .color(17,-90.5,0.75).hue(()=>time*.005)
-    .out(o1)
-
+  osc(0.50,1.25).mult(shape(12,20.09).rotate( () => Math.random()*15) )
+  .diff( osc(() => loFreq ) )
+  .add(shape(3,22).rotate( () => Math.random()*15 ).blend(gradient(1.6)))
+  .modulate(noise(6).modulate(noise(2).scrollY( ()=> himidFreq * 5, 0.0625 )))
+  .color(17,-90.5,0.75).hue(() => time * 0.005)
+  .out(o1)
 
 // VIDEO
   src(s0)
-  // .rotate(Math.PI * 0.5)
-  .kaleid(()=>mouse.y*.01+.03)
+  .kaleid(()=>mouse.y * 0.01 +0.03)
   .scale( () => scaler(mouse.x, 0, window.innerWidth, 0.25, 1.5), scaler(mouse.x, 0, window.innerWidth, 0.25, 1.5))
-  .scrollX(({time})=>4+3*Math.sin(time*.002))
+  .scrollX( ({time}) => 4 + 3 * Math.sin(time*.002) )
   .modulate(o1)
   .mult(o1,.6)
-
   .saturate(1.5)
   .modulate(o2,.002)
-  
-
-  
   .out(o2)
 
-render(o2)
-draw();
-
+  render(o2)
+  draw();
 }
 
 
@@ -623,65 +520,39 @@ function but9() {
   t9.style.color = "red";
 
   video.src = "./videos/9-BD02-crf22.mp4"
-  // video.src = "./videos/short.mp4"
   video.play().then( () => s0.init({src:video, dynamic:true}) )
 
-
-
-
   src(s0)
-  // .contrast(()=>mouse.x/1236*0.01+.03)
   .color(1,0,0)
-  // .scrollX(0.03,0.1)
-  // .scrollX(()=>dataArray[0]*.0004+0.00004, ()=>dataArray[0]*-.0004-0.00004)
-  .scrollX(()=> himidFreq * scaler(mouse.x, 0, window.innerWidth, -0.1, 0.1), 0)
-  .scrollY(()=> himidFreq * scaler(mouse.y, 0, window.innerHeight, -0.1, 0.1), 0)
-  // .scrollX(()=> 0.1 * himidFreq, 0)
-
+  .scrollX( () => himidFreq * scaler(mouse.x, 0, window.innerWidth, -0.1, 0.1), 0 )
+  .scrollY( () => himidFreq * scaler(mouse.y, 0, window.innerHeight, -0.1, 0.1), 0 )
   .add(src(s0).color(0,1,0)
-  .scrollX(()=> 4 * hiFreq * scaler(mouse.x, 0, window.innerWidth, -0.1, 0.1), 0)
-  .scrollY(()=> 4 * hiFreq * scaler(mouse.y, 0, window.innerHeight, -0.1, 0.1), 0)
-  // .scale(()=>dataArray[0]*0.0007+.1)
-  // .modulate(src(s0),.03)
-)
+    .scrollX( () => 4 * hiFreq * scaler(mouse.x, 0, window.innerWidth, -0.1, 0.1), 0 )
+    .scrollY( () => 4 * hiFreq * scaler(mouse.y, 0, window.innerHeight, -0.1, 0.1), 0 )
+    )
   .add(src(s0).color(.5,.5,0)
-  .scrollX(()=> 2 * loFreq * scaler(mouse.x, 0, window.innerWidth, -0.1, 0.1), 0)
-  .scrollY(()=> 3 * loFreq * scaler(mouse.y, 0, window.innerHeight, -0.1, 0.1), 0)
-  // .scrollX( () => -0.1* loFreq, 0)
+    .scrollX( () => 2 * loFreq * scaler(mouse.x, 0, window.innerWidth, -0.1, 0.1), 0 )
+    .scrollY( () => 3 * loFreq * scaler(mouse.y, 0, window.innerHeight, -0.1, 0.1), 0 )
     )
 
   .add(src(s0).color(0,0,1)
-    // .scrollX(-0.03,0.3)
-    .scrollX(()=> midFreq * scaler(mouse.x, 0, window.innerWidth, -0.1, 0.1), 0)
-    .scrollY(()=> 3 *  midFreq * scaler(mouse.y, 0, window.innerHeight, -0.1, 0.1), 0)
+    .scrollX( () => midFreq * scaler(mouse.x, 0, window.innerWidth, -0.1, 0.1), 0 )
+    .scrollY( () => 3 *  midFreq * scaler(mouse.y, 0, window.innerHeight, -0.1, 0.1), 0 )
     )
   .out(o0)
 
-
   src(o0)
-  // .modulate(o0)
-    // .modulateRotate(o0, scaler(mouse.x, 0, window.innerWidth, -0.1, 0.1))
-
-  //  .modulate(o0,()=>mouse.y/1236*.002+.0001)
-
-.out(o2)
-
-
+  .out(o2)
 
   src(o0)
   .scale(() => dataArray[3]/255*.3+1.3)
-  // .scrollX(({time})=>4+3*Math.sin(time*.2))
   .blend(o1,6)
   .saturate(0.2)
   .contrast(2)
-  // .mult(o2,()=>mouse.y*.001+.2)
   .modulate(s0, .03)
   .out(o3)
 
-
-render(o2)
-draw();
-
-speed=.15
-
+  render(o2)
+  draw();
+  speed=.15
 }
