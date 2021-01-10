@@ -155,96 +155,28 @@ albumTitle.addEventListener('click', () => { but0() })
 // Track buttons
 //  buttonHandler(element, id)
 
-// function buttonHandler (element, id) {
-//   let t1 = document.getElementById('but1');
-//   element.addEventListener('mouseover', () => { element.style.textDecoration = "line-through"; })
-//   element.addEventListener('mouseleave', () => { element.style.textDecoration = "none"; })
-//   element.addEventListener('click', () => { 
-//     trackdefaultColor();
-//     element.style.color = "red";
-//     scene[id]
-//   })
-// } 
+function buttonHandler (element, id) {
+  let element = document.getElementById('but1');
+  element.addEventListener('mouseover', () => { element.style.textDecoration = "line-through"; })
+  element.addEventListener('mouseleave', () => { element.style.textDecoration = "none"; })
+  element.addEventListener('click', () => { 
+    trackdefaultColor();
+    element.style.color = "red";
+    scene[id];
+  })
+} 
 
-let t0 = document.getElementById('clastic-title')
-// t1.addEventListener('mouseover', () => { t1.style.textDecoration = "line-through"; })
-// t1.addEventListener('mouseleave', () => { t1.style.textDecoration = "none"; })
-t0.addEventListener('click', () => { 
-  trackdefaultColor();
-  but0(); 
-})
+let t0 = document.getElementById('clastic-title'); buttonHandler (t0, 0)
+let t1 = document.getElementById('but1'); buttonHandler (t1, 1)
+let t2 = document.getElementById('but2'); buttonHandler (t2, 2)
+let t3 = document.getElementById('but3'); buttonHandler (t3, 3)
+let t4 = document.getElementById('but4'); buttonHandler (t4, 4)
+let t5 = document.getElementById('but5'); buttonHandler (t5, 5)
+let t6 = document.getElementById('but6'); buttonHandler (t6, 6)
+let t7 = document.getElementById('but7'); buttonHandler (t7, 7)
+let t8 = document.getElementById('but8'); buttonHandler (t8, 8)
+let t9 = document.getElementById('but9'); buttonHandler (t9, 9)
 
-
-let t1 = document.getElementById('but1')
-t1.addEventListener('mouseover', () => { t1.style.textDecoration = "line-through"; })
-t1.addEventListener('mouseleave', () => { t1.style.textDecoration = "none"; })
-t1.addEventListener('click', () => { 
-  but1(); 
-})
-
-let t2 = document.getElementById('but2')
-t2.addEventListener('mouseover', () => { t2.style.textDecoration = "line-through"; })
-t2.addEventListener('mouseleave', () => { t2.style.textDecoration = "none"; })
-t2.addEventListener('click', () => { 
-  t2.style.color = "red";
-  but2(); 
-})
-
-let t3 = document.getElementById('but3')
-t3.addEventListener('mouseover', () => { t3.style.textDecoration = "line-through"; })
-t3.addEventListener('mouseleave', () => { t3.style.textDecoration = "none"; })
-t3.addEventListener('click', () => { 
-  t3.style.color = "red";
-  but3(); 
-})
-
-let t4 = document.getElementById('but4')
-t4.addEventListener('mouseover', () => { t4.style.textDecoration = "line-through"; })
-t4.addEventListener('mouseleave', () => { t4.style.textDecoration = "none"; })
-t4.addEventListener('click', () => { 
-  t4.style.color = "red";
-  but4(); 
-})
-
-let t5 = document.getElementById('but5')
-t5.addEventListener('mouseover', () => { t5.style.textDecoration = "line-through"; })
-t5.addEventListener('mouseleave', () => { t5.style.textDecoration = "none"; })
-t5.addEventListener('click', () => { 
-  t5.style.color = "red";
-  but5(); 
-})
-
-let t6 = document.getElementById('but6')
-t6.addEventListener('mouseover', () => { t6.style.textDecoration = "line-through"; })
-t6.addEventListener('mouseleave', () => { t6.style.textDecoration = "none"; })
-t6.addEventListener('click', () => { 
-  t6.style.color = "red";
-  but6(); 
-})
-
-let t7 = document.getElementById('but7')
-t7.addEventListener('mouseover', () => { t7.style.textDecoration = "line-through"; })
-t7.addEventListener('mouseleave', () => { t7.style.textDecoration = "none"; })
-t7.addEventListener('click', () => { 
-  t7.style.color = "red";
-  but7(); 
-})
-
-let t8 = document.getElementById('but8')
-t8.addEventListener('mouseover', () => { t8.style.textDecoration = "line-through"; })
-t8.addEventListener('mouseleave', () => { t8.style.textDecoration = "none"; })
-t8.addEventListener('click', () => { 
-  t8.style.color = "red";
-  but8(); 
-})
-
-let t9 = document.getElementById('but9')
-t9.addEventListener('mouseover', () => { t9.style.textDecoration = "line-through"; })
-t9.addEventListener('mouseleave', () => { t9.style.textDecoration = "none"; })
-t9.addEventListener('click', () => { 
-  t9.style.color = "red";
-  but9(); 
-})
 
 
 
