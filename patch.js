@@ -144,6 +144,7 @@ function trackdefaultColor () {
   for (let t = 0; t < tracks.length; t++ ){
     tracks[t].style.color = "blanchedalmond";
   }
+  albumTitle.style.color = "blanchedalmond";
 }
 
 
@@ -156,13 +157,13 @@ albumTitle.addEventListener('click', () => { but0() })
 //  buttonHandler(element, id)
 
 function buttonHandler (element, id) {
-  let element = document.getElementById('but1');
+  console.log(id, element);
   element.addEventListener('mouseover', () => { element.style.textDecoration = "line-through"; })
   element.addEventListener('mouseleave', () => { element.style.textDecoration = "none"; })
   element.addEventListener('click', () => { 
     trackdefaultColor();
     element.style.color = "red";
-    scene[id];
+    scene[id]();
   })
 } 
 
