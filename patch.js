@@ -229,6 +229,8 @@ function but1() {
       .scale(1.1, 0.6), -0.5, 2, () => (time * 1) % 2) )
   .out()
 
+  solid().out(o1)
+
   voronoi(() => mouse.x/24 * .5, () => midFreq*3+90,0)
   .mult(osc(3,() => midFreq * 3 + 1.1, () => Math.sin(time/15)*.3+.08).saturate(4).kaleid(200) )
   .mult(o0).modulate(o1,0.5)
