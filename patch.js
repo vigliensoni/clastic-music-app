@@ -179,50 +179,37 @@ let t9 = document.getElementById('but9'); buttonHandler (t9, 9)
 // Scenes
 function but0() {
   // console.log('home');
-  // trackNo = 0;
 
   trackdefaultColor ()
   video.pause()
 
   s2.initImage("media/img/modelo3.gif")
   src(s2)
-  .scrollX(()=> scaler(mouse.x, 0, window.innerWidth, -0.5, 0.5), 0.0)
-  .scrollY(()=> scaler(mouse.y, 0, window.innerHeight, -0.05, 0.05), 0.0000)
+  .scrollX( () => scaler(mouse.x, 0, window.innerWidth, -0.5, 0.5), 0.0 )
+  .scrollY( () => scaler(mouse.y, 0, window.innerHeight, -0.05, 0.05), 0.0 )
   .scrollY(0.334, 0)
-  .scale( () => scaler(mouse.y, 0, window.innerHeight, 0.7, 0.394), scaler(mouse.y, 0, window.innerHeight, 0.9, 0.507))
-  // .scale([0.90, 1.10].smooth(1).fast(0.25))
+  .scale( () => scaler(mouse.y, 0, window.innerHeight, 0.7, 0.394), scaler(mouse.y, 0, window.innerHeight, 0.9, 0.507) )
   .scale( () => 1.05 + 0.1 * Math.sin(0.25*time) )
   .blend(o2)
   .out(o2)
 
- s1.initImage("media/img/chooseasong.png")
- src(s1)
-
-// .color(1,0,0)
-// .add(src(s1).color(0,1,0).scrollX(() => 0.005 * Math.sin(1*time) * Math.sin(5*time)))
-// .add(src(s1).color(0,0,1).scrollX(() => -0.005 * Math.sin(1*time) * Math.sin(5*time)))
-.scrollY(1.1, -0.01)
-// .blend(o1).blend(o1)
- .out(o1)
+  s1.initImage("media/img/chooseasong.png")
+  src(s1)
+  .scrollY(1.1, -0.01)
+  .out(o1)
  
-
- s0.initImage("media/img/cuadro3.png")
+  s0.initImage("media/img/cuadro3.png")
   src(s0)
-  .scrollX(()=> scaler(mouse.x, 0, window.innerWidth, -0.04, 0.04), 0.0)
-  .scrollY(()=> scaler(mouse.y, 0, window.innerHeight, -0.04, 0.04), 0.0000)
-  .scale(()=> scaler(mouse.x, 0, window.innerWidth, 0.8, 1.2))
-  // .scale([1.05,0.95].smooth(1).fast(0.25))
+  .scrollX( () => scaler(mouse.x, 0, window.innerWidth, -0.04, 0.04), 0.0 )
+  .scrollY( () => scaler(mouse.y, 0, window.innerHeight, -0.04, 0.04), 0.0000 )
+  .scale( () => scaler(mouse.x, 0, window.innerWidth, 0.8, 1.2) )
   .scale( () => 1.05 - 0.1 * Math.sin(0.25*time) )
-
   .layer(o2).blend(o0)
   .layer(o1).blend(o0)
   .out(o0)
   render(o0)
-  
 
 }
-
-
 
 function but1() {
   // console.log('1 - siltstone')
@@ -237,24 +224,24 @@ function but1() {
   solid(1,1,1)
   .layer(osc(500).modulateScale(
       shape(100, () => Math.cos(time * 0.5), 1)
-        .scale(1.1, 0.6), 1, 1, () => (time * 1) % 2))
-        .modulate(noise(4).scale(1.5,0.8,2).modulateScale( shape(100, () => Math.sin(time * 0.5), 1 )
-        .scale(1.1, 0.6), -0.5, 2, () => (time * 1) % 2))
+      .scale(1.1, 0.6), 1, 1, () => (time * 1) % 2))
+      .modulate(noise(4).scale(1.5,0.8,2).modulateScale( shape(100, () => Math.sin(time * 0.5), 1 )
+      .scale(1.1, 0.6), -0.5, 2, () => (time * 1) % 2) )
   .out()
 
-  voronoi(()=>mouse.x/24 * .5,()=> midFreq*3+90,0)
-  .mult(osc(3,()=> midFreq * 3 + 1.1,()=>Math.sin(time/15)*.3+.08).saturate(4).kaleid(200))
+  voronoi(() => mouse.x/24 * .5, () => midFreq*3+90,0)
+  .mult(osc(3,() => midFreq * 3 + 1.1, () => Math.sin(time/15)*.3+.08).saturate(4).kaleid(200) )
   .mult(o0).modulate(o1,0.5)
   .modulate(s0)
   .add(o1,0.8)
   .scrollY(-0.05)
   .scale(0.99)
   .modulate(o1)
-  .modulate(noise(()=>Math.sin(time)*.07+.2),()=>Math.sin(time)*.02+.1)
+  .modulate( noise(() => Math.sin(time)*.07+.2), () => Math.sin(time)*.02+.1 )
   .blend(s0, () => himidFreq * 35)
   .blend(o2).blend(o2).blend(o2).blend(o2).blend(o2).blend(o2)
-  .scrollX(()=> scaler(mouse.x, 0, window.innerWidth, -0.05, 0.05), 0.0000)
-  .scrollY(()=> scaler(mouse.y, 0, window.innerHeight, -0.05, 0.05), 0.0000)
+  .scrollX(() => scaler(mouse.x, 0, window.innerWidth, -0.05, 0.05), 0.0000)
+  .scrollY(() => scaler(mouse.y, 0, window.innerHeight, -0.05, 0.05), 0.0000)
   .out(o2)
 
   render(o2)
