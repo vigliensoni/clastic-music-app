@@ -183,6 +183,16 @@ function but0() {
   trackdefaultColor ()
   video.pause()
 
+  s0.initImage("media/img/cuadro3.png")
+  src(s0)
+  .scrollX( () => scaler(mouse.x, 0, window.innerWidth, -0.04, 0.04), 0.0 )
+  .scrollY( () => scaler(mouse.y, 0, window.innerHeight, -0.04, 0.04), 0.0 )
+  .scale( () => scaler(mouse.x, 0, window.innerWidth, 0.8, 1.2) )
+  .scale( () => 1.05 - 0.1 * Math.sin(0.25*time) )
+  .layer(o2).blend(o0)
+  .layer(o1).blend(o0)
+  .out(o0)
+
   s2.initImage("media/img/modelo3.gif")
   src(s2)
   .scrollX( () => scaler(mouse.x, 0, window.innerWidth, -0.5, 0.5), 0.0 )
@@ -198,16 +208,8 @@ function but0() {
   .scrollY(1.1, -0.01)
   .out(o1)
  
-  s0.initImage("media/img/cuadro3.png")
-  src(s0)
-  .scrollX( () => scaler(mouse.x, 0, window.innerWidth, -0.04, 0.04), 0.0 )
-  .scrollY( () => scaler(mouse.y, 0, window.innerHeight, -0.04, 0.04), 0.0000 )
-  .scale( () => scaler(mouse.x, 0, window.innerWidth, 0.8, 1.2) )
-  .scale( () => 1.05 - 0.1 * Math.sin(0.25*time) )
-  .layer(o2).blend(o0)
-  .layer(o1).blend(o0)
-  .out(o0)
   render(o0)
+  draw()
 
 }
 
@@ -264,7 +266,7 @@ function but2() {
   .scale(()=>dataArray[1]/255*1.1+.2)
   .contrast(1.3)
   .saturate(()=>dataArray[3]/255* 2 + 0.2)
-  .modulate(o0, () => scaler(mouse.y, 0, windor.innerHeight, 0, 0.5))
+  .modulate(o0, () => scaler(mouse.y, 0, window.innerHeight, 0, 0.5))
   .blend(o0)
   .scale(1.02, 1.02)
   .rotate(() => scaler(mouse.x, 0, window.innerWidth, -1.7, 1.7) )
@@ -291,7 +293,7 @@ function but3() {
   trackdefaultColor();
   t3.style.color = "red";
 
-  video.src = "./videos/3-BD07-crf23.mp4"
+  video.src = "./videos/3-BD07-crf22.mp4"
   video.play().then( () => s0.init({src:video, dynamic:true}) )
 
   src(s0)
@@ -543,5 +545,4 @@ function but9() {
 
   render(o2)
   draw();
-  speed=.15
 }
