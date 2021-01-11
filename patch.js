@@ -181,9 +181,25 @@ function but0() {
   // console.log('home');
 
   trackdefaultColor ()
-  video.pause()
+  // video.pause()
 
   s0.initImage("media/img/cuadro3.png")
+  s1.initImage("media/img/chooseasong.png")
+  s2.initImage("media/img/modelo3.gif")
+  
+  src(s2)
+  .scrollX( () => scaler(mouse.x, 0, window.innerWidth, -0.5, 0.5), 0.0 )
+  .scrollY( () => scaler(mouse.y, 0, window.innerHeight, -0.05, 0.05), 0.0 )
+  .scrollY(0.334, 0)
+  .scale( () => scaler(mouse.y, 0, window.innerHeight, 0.7, 0.394), scaler(mouse.y, 0, window.innerHeight, 0.9, 0.507) )
+  .scale( () => 1.05 + 0.1 * Math.sin(0.25*time) )
+  .blend(o2)
+  .out(o2)
+  
+  src(s1)
+  .scrollY(1.1, -0.01)
+  .out(o1)
+ 
   src(s0)
   .scrollX( () => scaler(mouse.x, 0, window.innerWidth, -0.04, 0.04), 0.0 )
   .scrollY( () => scaler(mouse.y, 0, window.innerHeight, -0.04, 0.04), 0.0 )
@@ -193,21 +209,6 @@ function but0() {
   .layer(o1).blend(o0)
   .out(o0)
 
-  s2.initImage("media/img/modelo3.gif")
-  src(s2)
-  .scrollX( () => scaler(mouse.x, 0, window.innerWidth, -0.5, 0.5), 0.0 )
-  .scrollY( () => scaler(mouse.y, 0, window.innerHeight, -0.05, 0.05), 0.0 )
-  .scrollY(0.334, 0)
-  .scale( () => scaler(mouse.y, 0, window.innerHeight, 0.7, 0.394), scaler(mouse.y, 0, window.innerHeight, 0.9, 0.507) )
-  .scale( () => 1.05 + 0.1 * Math.sin(0.25*time) )
-  .blend(o2)
-  .out(o2)
-
-  s1.initImage("media/img/chooseasong.png")
-  src(s1)
-  .scrollY(1.1, -0.01)
-  .out(o1)
- 
   render(o0)
   draw()
 
