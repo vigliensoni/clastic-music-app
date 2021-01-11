@@ -191,7 +191,7 @@ function but0() {
   .scrollX( () => scaler(mouse.x, 0, window.innerWidth, -0.5, 0.5), 0.0 )
   .scrollY( () => scaler(mouse.y, 0, window.innerHeight, -0.05, 0.05), 0.0 )
   .scrollY(0.334, 0)
-  .scale( () => scaler(mouse.y, 0, window.innerHeight, 0.7, 0.394), scaler(mouse.y, 0, window.innerHeight, 0.9, 0.507) )
+  .scale( () => scaler(mouse.y, 0, window.innerHeight, 0.7, 0.394) )
   .scale( () => 1.05 + 0.1 * Math.sin(0.25*time) )
   .blend(o2)
   .out(o2)
