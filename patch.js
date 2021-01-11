@@ -181,7 +181,7 @@ function but0() {
   // console.log('home');
 
   trackdefaultColor ()
-  // video.pause()
+  video.pause()
 
   s0.initImage("media/img/cuadro3.png")
   s1.initImage("media/img/chooseasong.png")
@@ -513,6 +513,11 @@ function but9() {
 
   video.src = "./videos/9-BD02-crf22.mp4"
   video.play().then( () => s0.init({src:video, dynamic:true}) )
+
+  solid().out(o0)
+  solid().out(o1)
+  solid().out(o2)
+  solid().out(o3)
 
   src(s0)
   .color(1,0,0)
