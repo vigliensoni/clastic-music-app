@@ -73,6 +73,8 @@
 
 .container {
     width: 100%;
+    position: absolute;
+    z-index: 1;
 }
 
 .demo {
@@ -85,9 +87,9 @@ padding-bottom: 0px;
     padding: 1px 1px;
     border-radius: 0;
     font-size: 16px;
-    background-color: #000000;
+    background-color: transparent;
     color: blanchedalmond;
-    align: left;
+    /* align: left; */
     /* text-transform: uppercase; */
     /* text-decoration: underline; */
     }
@@ -97,9 +99,9 @@ padding-bottom: 0px;
     padding: 1px 1px;
     border-radius: 0;
     font-size: 16px;
-    background-color: #000000;
+    background-color: transparent;
     color: blanchedalmond;
-    align: right;
+    /* align: right; */
     /* text-transform: uppercase; */
     /* text-decoration: underline; */
     }

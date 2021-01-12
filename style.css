@@ -13,15 +13,17 @@ index, html {
     border-spacing: 10px;
     text-align: center;
     font-family:'Syne', sans-serif;
-     font-weight: bold;
+    font-weight: bold;
     font-style: normal;
     margin-left: auto;
     margin-right: auto;
+    position: fixed;
+    bottom: 0;
 }
 .tableColumn
 {
     display: table-cell;
-    background-color: rgb(0, 0, 0);
+    /* background-color: rgb(0, 0, 0); */
     font-family:/* Copperplate; */'Syne', sans-serif;
     font-weight: normal;
     font-style: normal;
