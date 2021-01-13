@@ -15,21 +15,23 @@
 <body class="w-100 h-100 mw-100" >
   <!-- Sidebar modals -->
   <div class="container demo">
-    <div class="text-center">
-      <div class="text-left">
-        <button type="button" class="btn btn-demo-l" data-toggle="modal" data-target="#myModal">
-          Info 
-        </button>
+    <div id="navbar">
+      <div class="text-center">
+        <div class="text-left">
+          <button type="button" class="btn btn-demo-l" data-toggle="modal" data-target="#myModal">
+            Info 
+          </button>
+        </div>
+        <div class="btn btn-demo-r">
+          <span id="clastic-title"></span>
+        </div>
+        <div class="text-right">
+          <button type="button" class="btn btn-demo-r" data-toggle="modal" data-target="#myModal2">
+            Credits
+          </button>
+        </div>
       </div>
-      <div class="btn btn-demo-r">
-        <span id="clastic-title"></span>
-      </div>
-      <div class="text-right">
-        <button type="button" class="btn btn-demo-r" data-toggle="modal" data-target="#myModal2">
-          Credits
-        </button>
-      </div>
-    </div>
+  </div>
 
     <!-- Modal Left -->
     <div class="modal left fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -78,7 +80,7 @@
               <p>Big thanks to:</p>
               <p>Marco Colasso, Daniela Cross and Delfina, Rebecca Fiebrink and Oscar, Ichiro Fujinaga, Claudine Hubert, Esteban Maestre, 
                 Louis McCallum, Alan Mongeau, Néstor Nápoles, Samuel Thulin, Santiago Uribe, Marc-Pierre Verge, Lizzie Wilson, AAS, CIRMMT, 
-                FRQSC, MIMIC project, and MUTEK.</p>
+                FRQSC, MIMIC project, and MUTEK Montréal.</p>
           </div>
         </div>
       </div>
@@ -97,24 +99,26 @@
     </div>
   </div> 
   
-  <div id="hydra-canvas" class="center"></div>
+  <div id="hydra-canvas"></div>
 
-  <div class="tableRow">
-    <div class="tableColumn" id="but1">Siltstone</div>
-    <div class="tableColumn" id="but2">Breccia</div>
-    <div class="tableColumn" id="but3">Ooze</div>
-    <div class="tableColumn" id="but4">Claystone</div>
-    <div class="tableColumn" id="but5">Clastic</div>
-    <div class="tableColumn" id="but6">Fall in Sync</div>
-    <div class="tableColumn" id="but7">Telematic Awakening</div>
-    <div class="tableColumn" id="but8">Sandstone</div>
-    <div class="tableColumn" id="but9">Shale</div>
-    <div class="tableColumn" id="mute"><img src="media/icons/audio-50.png" width = 25px></div>
+  <div class="page-foot">
+    <div class="tableRow">
+      <div class="tableColumn" id="but1">Siltstone</div>
+      <div class="tableColumn" id="but2">Breccia</div>
+      <div class="tableColumn" id="but3">Ooze</div>
+      <div class="tableColumn" id="but4">Claystone</div>
+      <div class="tableColumn" id="but5">Clastic</div>
+      <div class="tableColumn" id="but6">Fall in Sync</div>
+      <div class="tableColumn" id="but7">Telematic Awakening</div>
+      <div class="tableColumn" id="but8">Sandstone</div>
+      <div class="tableColumn" id="but9">Shale</div>
+      <div class="tableColumn" id="mute"><img src="media/icons/audio-50.png" width = 25px></div>
+    </div>
   </div>
   
   
-  <script src='./hydra-synth.js'></script>
-  <script src='./patch.js'></script>
+  <script src='./hydra-synth.min.js'></script>
+  <script src='./patch.min.js'></script>
   <script src='./info.js'></script>
     
   
