@@ -85,7 +85,7 @@ padding-bottom: 0px;
     padding: 1px 1px;
     border-radius: 0;
     font-size: 16px;
-    background-color: #000000;
+    background-color: rgb(0, 0, 0, 0);
     color: blanchedalmond;
     align: left;
     /* text-transform: uppercase; */
@@ -97,7 +97,7 @@ padding-bottom: 0px;
     padding: 1px 1px;
     border-radius: 0;
     font-size: 16px;
-    background-color: #000000;
+    background-color: rgb(0, 0, 0, 0);
     color: blanchedalmond;
     align: right;
     /* text-transform: uppercase; */
@@ -116,6 +116,10 @@ outline: 0;
 .text-right {
     width:30%;
     float: right;
+}
+
+.text-center {
+    background-color: rgb(0, 0, 0, 0.33);
 }
 
 .title-ctr {
