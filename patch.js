@@ -276,7 +276,7 @@ function but2() {
   .modulate(o0, () => scaler(mouse.y, 0, window.innerHeight, 0, 0.5))
   .blend(o0)
   .scale(1.02, 1.02)
-  .rotate(() => scaler(mouse.x, 0, window.innerWidth, -1.7, 1.7) )
+  .rotate(() => scaler(mouse.x, 0, window.innerWidth, -0.75, 0.75) )
   .modulate(o1)
   .out(o0)
 
