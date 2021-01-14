@@ -1,11 +1,6 @@
 @font-face {
     font-family: 'Syne';
-    src: url('Syne-Regular.eot');
-    src: url('Syne-Regular.eot?#iefix') format('embedded-opentype'),
-        url('Syne-Regular.woff2') format('woff2'),
-        url('Syne-Regular.woff') format('woff'),
-        url('Syne-Regular.ttf') format('truetype'),
-        url('Syne-Regular.svg#Syne-Regular') format('svg');
+    src: url('Syne-regular.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -13,14 +8,8 @@
 
 @font-face {
     font-family: 'Syne';
-    src: url('Syne-Bold.eot');
-    src: url('Syne-Bold.eot?#iefix') format('embedded-opentype'),
-        url('Syne-Bold.woff2') format('woff2'),
-        url('Syne-Bold.woff') format('woff'),
-        url('Syne-Bold.ttf') format('truetype'),
-        url('Syne-Bold.svg#Syne-Bold') format('svg');
+    src: url('Syne-Bold.woff2') format('woff2');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
 }
-
