@@ -27,8 +27,14 @@ const playButton = document.getElementById('audio');
 
 playButton.addEventListener('click', () => {
 
+  // Full screen, add title, and footer
   toggleFullScreen();
   document.getElementById('clastic-title').innerText = "CLASTIC MUSIC";
+  trackdefaultColor();
+ 
+  document.getElementById("tableRow").style.visibility="visible";
+
+  // Add audio stuff
   const context = new ( AudioContext || webkitAudioContext )();
   analyser = context.createAnalyser();
   source = context.createMediaElementSource(video);
@@ -38,8 +44,9 @@ playButton.addEventListener('click', () => {
   
   analyser.fftSize = 32;
   dataArray = new Uint8Array(analyser.frequencyBinCount);
-  trackdefaultColor();
-  but0(); 
+
+
+  but0();  
   }
 );
 
