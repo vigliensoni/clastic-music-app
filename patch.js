@@ -475,7 +475,7 @@ function but7() {
 }
 
 function but8() {
-  console.log('8 - sandstone')
+  // console.log('8 - sandstone')
   trackNo = 8
 
   trackdefaultColor();
