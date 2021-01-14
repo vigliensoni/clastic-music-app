@@ -25,13 +25,13 @@ let hiFreq;
 // Play
 const playButton = document.getElementById('audio');
 
-playButton.addEventListener('click', () => {
+playButton.addEventListener('mouseover', () => { playButton.style.textDecoration = "line-through"; })
+playButton.addEventListener('mouseleave', () => { playButton.style.textDecoration = "underline"; })
 
+playButton.addEventListener('click', () => {
   // Full screen, add title, and footer
   toggleFullScreen();
   document.getElementById('clastic-title').innerText = "CLASTIC MUSIC";
-  trackdefaultColor();
- 
   document.getElementById("tableRow").style.visibility="visible";
 
   // Add audio stuff
@@ -44,7 +44,6 @@ playButton.addEventListener('click', () => {
   
   analyser.fftSize = 32;
   dataArray = new Uint8Array(analyser.frequencyBinCount);
-
 
   but0();  
   }
