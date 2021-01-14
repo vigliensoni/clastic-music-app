@@ -484,26 +484,60 @@ function but8() {
   video.src = "./videos/8-BD01-crf22.mp4"
   video.play().then( () => s0.init({src:video, dynamic:true}) )
 
-// AGUA
-  osc(0.50,1.25).mult(shape(12,20.09).rotate( () => Math.random()*15) )
-  .diff( osc(() => loFreq ) )
-  .add(shape(3,22).rotate( () => Math.random()*15 ).blend(gradient(1.6)))
-  .modulate(noise(6).modulate(noise(2).scrollY( ()=> himidFreq * 5, 0.0625 )))
-  .color(17,-90.5,0.75).hue(() => time * 0.005)
-  .out(o1)
+// // AGUA
+//   osc(0.50,1.25).mult(shape(12,20.09).rotate( () => Math.random()*15) )
+//   .diff( osc(() => loFreq ) )
+//   .add(shape(3,22).rotate( () => Math.random()*15 ).blend(gradient(1.6)))
+//   .modulate(noise(6).modulate(noise(2).scrollY( ()=> himidFreq * 5, 0.0625 )))
+//   .color(17,-90.5,0.75).hue(() => time * 0.005)
+//   .out(o1)
 
-// VIDEO
-  src(s0)
-  .kaleid(()=>mouse.y * 0.01 +0.03)
-  .scale( () => scaler(mouse.x, 0, window.innerWidth, 0.25, 1.5), scaler(mouse.x, 0, window.innerWidth, 0.25, 1.5))
-  .scrollX( ({time}) => 4 + 3 * Math.sin(time*.002) )
-  .modulate(o1)
-  .mult(o1,.6)
-  .saturate(1.5)
-  .modulate(o2,.002)
-  .out(o2)
+// // VIDEO
+//   src(s0)
+//   .kaleid(()=>mouse.y * 0.01 +0.03)
+//   .scale( () => scaler(mouse.x, 0, window.innerWidth, 0.25, 1.5), scaler(mouse.x, 0, window.innerWidth, 0.25, 1.5))
+//   .scrollX( ({time}) => 4 + 3 * Math.sin(time*.002) )
+//   .modulate(o1)
+//   .mult(o1,.6)
+//   .saturate(1.5)
+//   .modulate(o2,.002)
+//   .out(o2)
 
-  render(o2)
+
+osc(4,0,2)
+  .modulate(
+    osc(10,0.03,0).modulate(
+      noise(()=>loFreq*3+0.0001,0.1),0.2).sub(gradient()),1)//.mult(shape(99,0.1,0.9))
+      .out(o1)
+
+
+
+      src(o0)
+      .repeat(1,0.999)
+      // .colorama(-0.001)
+      .modulate(o0,0.001)
+      .scale(1.001)
+      .rotate(0.001)
+      // .shift(-0.01,0,-0.01,0.9)
+      .layer(src(s0)
+      .scale(1,0.95)
+      .saturate(1.2)
+      // .contrast(1.2)
+      .contrast(() => scaler(mouse.y, 0, window.innerHeight, 1, 4))
+      .modulateScale(osc(()=>himidFreq*5+0.00011,0))
+      //   .thresh(),0.5)
+      .luma (()=> scaler(mouse.x, 0, window.innerWidth, 0.1, 0.9), 0)
+        // .blend (o1 , ()=> scaler(mouse.y, 0, window.innerHeight, .1, 0.9))
+        // .modulate(s0,()=> scaler(mouse.y, 0, window.innerHeight, .01, 1))
+        // .luma(0.9)
+      )
+      //.modulate(noise(3,0.3).pixelate(120,100),0.01)
+      //.modulate(src(o0).scale(1.5),-0.01))
+      .out()
+
+
+
+  render(o0)
   draw();
 }
 
