@@ -507,32 +507,23 @@ function but8() {
 osc(4,0,2)
   .modulate(
     osc(10,0.03,0).modulate(
-      noise(()=>loFreq*3+0.0001,0.1),0.2).sub(gradient()),1)//.mult(shape(99,0.1,0.9))
-      .out(o1)
-
-
+      noise(()=>loFreq*3+0.0001,0.1),0.2)
+      .sub(gradient()),1)//.mult(shape(99,0.1,0.9))
+      // .out(o1)
 
       src(o0)
       .repeat(1,0.999)
-      // .colorama(-0.001)
       .modulate(o0,0.001)
       .scale(1.001)
       .rotate(0.001)
-      // .shift(-0.01,0,-0.01,0.9)
       .layer(src(s0)
-      .scale(1,0.95)
-      .saturate(1.2)
-      // .contrast(1.2)
-      .contrast(() => scaler(mouse.y, 0, window.innerHeight, 1, 4))
-      .modulateScale(osc(()=>himidFreq*5+0.00011,0))
-      //   .thresh(),0.5)
-      .luma (()=> scaler(mouse.x, 0, window.innerWidth, 0.1, 0.9), 0)
-        // .blend (o1 , ()=> scaler(mouse.y, 0, window.innerHeight, .1, 0.9))
-        // .modulate(s0,()=> scaler(mouse.y, 0, window.innerHeight, .01, 1))
-        // .luma(0.9)
-      )
-      //.modulate(noise(3,0.3).pixelate(120,100),0.01)
-      //.modulate(src(o0).scale(1.5),-0.01))
+        .scale(1,0.95)
+        .saturate(1.2)
+        // .contrast(1.2)
+        .contrast(() => scaler(mouse.y, 0, window.innerHeight, 1, 4))
+        .modulateScale(osc(()=>himidFreq*5+0.00011,0))
+        .luma (()=> scaler(mouse.x, 0, window.innerWidth, 0.1, 0.9), scaler(mouse.x, 0, window.innerWidth, 0.5, 1.0))
+        )
       .out()
 
 
