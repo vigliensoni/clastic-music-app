@@ -2,7 +2,7 @@
   const Output = require('./src/output.js')
   const loop = require('raf-loop')
   const Source = require('./src/hydra-source.js')
-  const Mouse = require('mouse-change')()
+  const Mouse = require('mouse-change')
   // const Audio = require('./src/lib/audio.js')
   const VidRecorder = require('./src/lib/video-recorder.js')
   const ArrayUtils = require('./src/lib/array-utils.js')
@@ -51,7 +51,7 @@
           fps: 0
         },
         speed: 1,
-        mouse: Mouse,
+        mouse:Mouse(document.getElementById("hydra-canvas"),(function(buttons,x,y){})),
         render: this._render.bind(this),
         setResolution: this.setResolution.bind(this),
         update: (dt) => {},// user defined update function
