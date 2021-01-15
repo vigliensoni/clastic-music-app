@@ -189,7 +189,7 @@ function but0() {
   trackdefaultColor ()
   video.pause()
 
-  s0.initImage("media/img/cuadro3.png")
+  s0.initImage("media/img/cuadro3.jpg")
   s1.initImage("media/img/chooseasong.png")
   s2.initImage("media/img/modelo3.gif")
   
