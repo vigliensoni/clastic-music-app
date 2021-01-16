@@ -488,18 +488,22 @@ function but8() {
   .repeat(1,0.999)
   .modulate(o0,0.001)
   .scale(1.001)
-  .rotate(0.001)
+  .rotate(() => scaler(mouse.y, 0, window.innerHeight, -.017, .017))
   .layer(src(s0)
     .scale(1,0.95)
-    .saturate(1.2)
+    .saturate(.4)
     .contrast(() => scaler(mouse.y, 0, window.innerHeight, 1, 4))
-    .modulateScale(osc(()=>himidFreq*5+0.00011,0))
+    .modulateScale(noise(()=>himidFreq* 0.6+0.00011,0))
     .luma (()=> scaler(mouse.x, 0, window.innerWidth, 0.1, 0.9), scaler(mouse.x, 0, window.innerWidth, 0.5, 1.0))
     )
   .out()
 
   render(o0)
   draw();
+
+render(o0)
+draw();
+
 }
 
 
