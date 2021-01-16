@@ -16,21 +16,30 @@
   <!-- Sidebar modals -->
   <div class="container demo">
     <div id="navbar">
-      <div class="text-center">
-        <div class="text-left">
+      <!-- <div class="text-center"> -->
+        
+        <ul class="nav nav-pills nav-justified" role="tablist">
+          <li id="info-button"><button type="button" class="btn btn-demo-l" data-toggle="modal" data-target="#myModal">Info</button></li>
+          <li id="clastic-title"><span></span></li>
+          <li id="credits-button"><button type="button" class="btn btn-demo-r" data-toggle="modal" data-target="#myModal2">Credits</button></li>
+        </ul>
+
+
+        <!-- <div class="text-left">
           <button type="button" class="btn btn-demo-l" data-toggle="modal" data-target="#myModal">
             Info 
           </button>
         </div>
-        <div class="btn btn-demo-r">
+        <div class="text-center">
           <span id="clastic-title"></span>
         </div>
         <div class="text-right">
           <button type="button" class="btn btn-demo-r" data-toggle="modal" data-target="#myModal2">
             Credits
           </button>
-        </div>
-      </div>
+        </div> -->
+
+      <!-- </div> -->
   </div>
 
     <!-- Modal Left -->
@@ -116,9 +125,9 @@
     </div>
   </div> -->
 
-  <div class="page-foot">
+  <div id="page-foot">
 
-    <ul class="nav nav-pills nav-justified" role="tablist" id="tableRow" style="visibility: hidden;">
+    <ul class="nav nav-pills nav-justified" role="tablist" id="footer" style="visibility: hidden;">
       <!-- <li class="active"><a href="#">Home</a></li> -->
       <li class="tableColumn" id="but1">Siltstone</li>
       <li class="tableColumn" id="but2">Breccia</li>

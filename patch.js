@@ -32,7 +32,7 @@ playButton.addEventListener('click', () => {
   // Full screen, add title, and footer
   toggleFullScreen();
   document.getElementById('clastic-title').innerText = "CLASTIC MUSIC";
-  document.getElementById("tableRow").style.visibility="visible";
+  document.getElementById("footer").style.visibility="visible";
 
   // Add audio stuff
   const context = new ( AudioContext || webkitAudioContext )();

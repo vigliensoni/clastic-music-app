@@ -34,10 +34,12 @@ index, html {
 
 }
 
-.page-foot {
+#page-foot {
+  width: 100%;
   position: absolute;
   bottom: 0;
-  width: 100%;
+  z-index:; 10;
+  background-color: rgb(0, 0, 0, 0.33);
 }
 
 #navbar {
@@ -46,8 +48,8 @@ index, html {
   top: 0;
   left: 0;
   z-index: 10;
+  background-color: rgb(0, 0, 0, 0.333);
 }
-
 
 /* Info */
 
@@ -86,6 +88,20 @@ font-family:/* monospace */'Syne', sans-serif;
     text-decoration: underline;
     padding: 5px;
 
+}
+
+
+/* NAVBAR BUTTONS */
+#info-button {
+  text-align: left;
+}
+
+#clastic-title {
+  text-align: center;
+}
+
+#credits-button {
+  text-align: right;
 }
 
 
