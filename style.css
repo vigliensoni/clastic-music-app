@@ -30,12 +30,14 @@ index, html {
     text-transform: uppercase;
     /* text-decoration: underline; */
     background-color: rgb(0, 0, 0, 0);
+    text-align: center;
 
 }
 
 .page-foot {
   position: absolute;
   bottom: 0;
+  width: 100%;
 }
 
 #navbar {
@@ -119,14 +121,14 @@ font-family:/* monospace */'Syne', sans-serif;
    
 }
 
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 600px) {
   .cover img {
     margin-left: auto;
     margin-right: auto;
     text-align: center; 
     width: 250px;
   }
-}
+} */
 
 
 
@@ -205,16 +207,7 @@ a:active {
 }
 
 
-@media screen and (max-width: 500px) {
-/*
-  .cover img{
-   margin-left: auto;
-   margin-right: auto;
-   text-align: center; 
-   width: 250px;
-   
-}
-*/
+/* @media screen and (max-width: 500px) {
   #userAction-content {
     background-color: #000/* #140d0d */;
     margin: 5% auto; /* 15% from the top and centered */
@@ -223,4 +216,4 @@ a:active {
     width: 40%; /* Could be more or less, depending on screen size */
     text-align: center;
   }
-}
+} */
