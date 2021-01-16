@@ -38,11 +38,13 @@ index, html {
   width: 100%;
   position: absolute;
   bottom: 0;
-  z-index:; 10;
+  z-index: 10;
   background-color: rgb(0, 0, 0, 0.33);
+  padding-bottom: 10px;
 }
 
 #navbar {
+  display: table;
   width: 100%;
   position: absolute;
   top: 0;
@@ -50,6 +52,27 @@ index, html {
   z-index: 10;
   background-color: rgb(0, 0, 0, 0.333);
 }
+
+
+/* NAVBAR BUTTONS */
+#info-button {
+  text-align: left;
+  display: table-cell;
+  width: 33%;
+}
+
+#clastic-title {
+  text-align: center;
+  display: table-cell;
+  width: 34%
+}
+
+#credits-button {
+  text-align: right;
+  display: table-cell;
+  width: 33%
+}
+
 
 /* Info */
 
@@ -91,18 +114,6 @@ font-family:/* monospace */'Syne', sans-serif;
 }
 
 
-/* NAVBAR BUTTONS */
-#info-button {
-  text-align: left;
-}
-
-#clastic-title {
-  text-align: center;
-}
-
-#credits-button {
-  text-align: right;
-}
 
 
  /* The Modal (background) */
