@@ -329,7 +329,6 @@ function but3() {
   t3.style.color = "red";
 
   video.src = "./videos/3-BD07-crf22.mp4";
-  video.playsInline = true;
   video.play().then( () => s0.init({src:video, dynamic:true}) )
 
   src(s0)
@@ -369,7 +368,6 @@ function but4() {
   t4.style.color = "red";
 
   video.src = "./videos/4-E02-crf22.mp4";
-  video.playsInline = true;
   video.play().then( () => s0.init({src:video, dynamic:true}) )
 
   src(s0)
@@ -409,7 +407,6 @@ function but5() {
   t5.style.color = "red";
 
   video.src = "./videos/5-CLASTIC-crf22.mp4";
-  video.playsInline = true;
   video.play().then( () => s0.init({src:video, dynamic:true}) )
 
   src(o0)
