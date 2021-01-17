@@ -254,6 +254,7 @@ function but1() {
   t1.style.color = "red";
 
   video.src = "./videos/1-E01-crf22.mp4"
+  video.playsInline = true
   video.play().then( () => s0.init({src:video, dynamic:true}))
 
   solid(1,1,1)
@@ -293,6 +294,7 @@ function but2() {
   t2.style.color = "red";
 
   video.src = "./videos/2-BD08-crf22.mp4"
+  video.playsInline = true
   video.play().then( () => s0.init({src:video, dynamic:true}) )
 
   src(s0)
@@ -326,7 +328,8 @@ function but3() {
   trackdefaultColor();
   t3.style.color = "red";
 
-  video.src = "./videos/3-BD07-crf22.mp4"
+  video.src = "./videos/3-BD07-crf22.mp4";
+  video.playsInline = true;
   video.play().then( () => s0.init({src:video, dynamic:true}) )
 
   src(s0)
@@ -365,7 +368,8 @@ function but4() {
   trackdefaultColor();
   t4.style.color = "red";
 
-  video.src = "./videos/4-E02-crf22.mp4"
+  video.src = "./videos/4-E02-crf22.mp4";
+  video.playsInline = true;
   video.play().then( () => s0.init({src:video, dynamic:true}) )
 
   src(s0)
@@ -404,7 +408,8 @@ function but5() {
   trackdefaultColor();
   t5.style.color = "red";
 
-  video.src = "./videos/5-CLASTIC-crf22.mp4"
+  video.src = "./videos/5-CLASTIC-crf22.mp4";
+  video.playsInline = true;
   video.play().then( () => s0.init({src:video, dynamic:true}) )
 
   src(o0)
