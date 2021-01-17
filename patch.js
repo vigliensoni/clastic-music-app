@@ -166,6 +166,7 @@ function buttonHandler (element, id) {
     trackdefaultColor();
     element.style.color = "red";
     scene[id]();
+    $('.navbar-collapse').collapse('hide');
   })
 } 
 

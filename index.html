@@ -87,52 +87,39 @@
     </div>
   </div> 
   
-  <div id="hydra-canvas"></div>
-
-
-  <!-- <div id="page-foot">
-    <ul class="nav nav-pills nav-justified" role="tablist" id="footer" style="visibility: hidden;">
-      <li class="tableColumn" id="but1">Siltstone</li>
-      <li class="tableColumn" id="but2">Breccia</li>
-      <li class="tableColumn" id="but3">Ooze</li>
-      <li class="tableColumn" id="but4">Claystone</li>        
-      <li class="tableColumn" id="but5">Clastic</li>
-      <li class="tableColumn" id="but6">Fall in Sync</li>
-      <li class="tableColumn" id="but7">Telematic Awakening</li>
-      <li class="tableColumn" id="but8">Sandstone</li>
-      <li class="tableColumn" id="but9">Shale</li>  
-      <li class="tableColumn" id="mute"><img src="media/icons/audio-50.png" width = 25px></li>    
-    </ul>
-  </div> -->
-
-
-  <div class="footer" id="page-foot">
-    <input class="menu-btn" type="checkbox" id="menu-btn" />
-    <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
-    <ul class="menu" id="footer" style="visibility: hidden;">
-        <li class="tableColumn" id="but1">Siltstone</li>
-        <li class="tableColumn" id="but2">Breccia</li>
-        <li class="tableColumn" id="but3">Ooze</li>
-        <li class="tableColumn" id="but4">Claystone</li>        
-        <li class="tableColumn" id="but5">Clastic</li>
-        <li class="tableColumn" id="but6">Fall in Sync</li>
-        <li class="tableColumn" id="but7">Telematic Awakening</li>
-        <li class="tableColumn" id="but8">Sandstone</li>
-        <li class="tableColumn" id="but9">Shale</li>  
-        <li class="tableColumn" id="mute"><img src="media/icons/audio-50.png" width=25px></li>  
-    </ul>
-  </div>
-
-
-
-
+  <div id="hydra-canvas"></div>  
+    <!-- Defines a standard navigation bar -->
+    <nav id="footer" class="navbar navbar-default" style="visibility: hidden;">
+      <!--Collapse Button-->
+      <div id="hamburger">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span> 
+        </button>
+      </div>
+        
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-info">
+          <li class="tableColumn" id="but1">Siltstone</li>
+          <li class="tableColumn" id="but2">Breccia</li>
+          <li class="tableColumn" id="but3">Ooze</li>
+          <li class="tableColumn" id="but4">Claystone</li>
+          <li class="tableColumn" id="but5">Clastic</li>
+          <li class="tableColumn" id="but6">Fall in Sync</li>
+          <li class="tableColumn" id="but7">Telematic Awakening</li>
+          <li class="tableColumn" id="but8">Sandstone</li>
+          <li class="tableColumn" id="but9">Shale</li>
+          <li class="tableColumn" id="mute"><img src="media/icons/audio-50.png" width = 25px></li>
+        </ul>
+      </div>
+    </nav>
 
 
   <script src='./hydra-synth.js'></script>
   <script src='./patch.js'></script>
   <script src='./info.js'></script>
     
-  
 
 </body>
 </html>
