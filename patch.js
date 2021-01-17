@@ -80,14 +80,39 @@ document.addEventListener("keypress", function(e) {
 
 function toggleFullScreen() {
   if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen();
-      // document.documentElement.webkitRequestFullscreen(); //SAFARI
+      const element = document.documentElement;
+      if(element.requestFullscreen) {
+        element.requestFullscreen();        // W3C spec
+      }
+      else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();     // Firefox
+      }
+      else if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();  // Safari
+      }
+      else if(element.msRequestFullscreen) {
+        element.msRequestFullscreen();      // IE/Edge
+      }
   } else {
     if (document.exitFullscreen) {
       document.exitFullscreen();
     }
   }
 }
+
+// function toggleFullScreen() {
+//   let elem = document.documentElement;
+
+//   if (!document.fullscreenElement) {
+//     elem.requestFullscreen().catch(err => {
+//       alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+//     });
+//   } else {
+//     document.exitFullscreen();
+//   }
+// }
+
+
 
 let trackNo
 scene = [but0, but1, but2, but3, but4, but5, but6, but7, but8, but9]
