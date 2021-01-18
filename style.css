@@ -89,9 +89,10 @@ index, html {
 .info_details {
     
 font-family:/* monospace */'Syne', sans-serif;
-    font-style: normal;
-    font-weight: normal;
-    text-align: center;
+  padding-top: 20px;
+  font-style: normal;
+  font-weight: normal;
+  text-align: center;
 }
 
 #infolist {
@@ -100,14 +101,13 @@ font-family:/* monospace */'Syne', sans-serif;
   padding-left: 15px;
 }
 
-.info_warning {
-    
+.info_warning { 
+  padding-top: 20px;  
   font-family:/* monospace */'Syne', sans-serif;
-      font-style: normal;
-      font-weight: normal;
-      text-align: center;
-
-    }
+  font-style: normal;
+  font-weight: normal;
+  text-align: center;
+  }
 
 .playbutton {
     font-family: 'Syne';
@@ -124,10 +124,13 @@ font-family:/* monospace */'Syne', sans-serif;
   color: black;
   background-color:rgba(255, 235, 205, 1);
   padding: 2px;
-
-  
 }
 
+.browsers {
+  color: white;
+  background-color:rgba(255, 235, 205, 0.25);
+  padding: 2px;
+}
 
 
  /* The Modal (background) */
