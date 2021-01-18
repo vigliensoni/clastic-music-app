@@ -94,6 +94,12 @@ font-family:/* monospace */'Syne', sans-serif;
     text-align: center;
 }
 
+#infolist {
+  list-style: number;
+  display: block;
+  padding-left: 15px;
+}
+
 .info_warning {
     
   font-family:/* monospace */'Syne', sans-serif;
@@ -113,6 +119,11 @@ font-family:/* monospace */'Syne', sans-serif;
 
 }
 
+.bold {
+  font-weight: bold;
+  color:rgba(195, 50, 77, 0.92);
+  
+}
 
 
 
