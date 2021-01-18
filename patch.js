@@ -21,6 +21,10 @@ let midFreq;
 let himidFreq;
 let hiFreq;
 
+// Check if Safari and alert the user
+if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+  alert("Your browser is not suported. To best experience Clastic Music, use headphones on a desktop computer running Firefox or Chrome.");
+}
 
 // Play
 const playButton = document.getElementById('audio');
