@@ -36,17 +36,25 @@ playButton.addEventListener('click', () => {
   document.getElementById("footer").style.visibility="visible";
 
   // Add audio stuff
-  const context = new ( AudioContext || webkitAudioContext )();
-  analyser = context.createAnalyser();
-  source = context.createMediaElementSource(video);
+  const context = new ( window.AudioContext || window.webkitAudioContext || false )();
+  if ( context ) {
+    context.resume();
+    console.log('context');
+    console.log(context.state)
+    analyser = context.createAnalyser();
+    source = context.createMediaElementSource(video);
+    
+    source.connect(analyser);
+    analyser.connect(context.destination);
+    
+    analyser.fftSize = 32;
+    dataArray = new Uint8Array(analyser.frequencyBinCount);
   
-  source.connect(analyser);
-  analyser.connect(context.destination);
-  
-  analyser.fftSize = 32;
-  dataArray = new Uint8Array(analyser.frequencyBinCount);
+    but0();  
+  } else {
+    alert("WebAudio not supported in your browser.")
+  }
 
-  but0();  
   }
 );
 

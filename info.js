@@ -10,7 +10,7 @@ var span = document.getElementById("audio");
 // When the window loads, open the modal
 window.onload = function() {
   modal.style.display = "block";
-  safariCheck();
+  // safariCheck();
 }
 
 // When the user clicks on ```play```, close the modal
