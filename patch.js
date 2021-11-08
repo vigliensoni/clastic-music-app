@@ -36,17 +36,25 @@ playButton.addEventListener('click', () => {
   document.getElementById("footer").style.visibility="visible";
 
   // Add audio stuff
-  const context = new ( AudioContext || webkitAudioContext )();
-  analyser = context.createAnalyser();
-  source = context.createMediaElementSource(video);
+  const context = new ( window.AudioContext || window.webkitAudioContext || false )();
+  if ( context ) {
+    context.resume();
+    console.log('context');
+    console.log(context.state)
+    analyser = context.createAnalyser();
+    source = context.createMediaElementSource(video);
+    
+    source.connect(analyser);
+    analyser.connect(context.destination);
+    
+    analyser.fftSize = 32;
+    dataArray = new Uint8Array(analyser.frequencyBinCount);
   
-  source.connect(analyser);
-  analyser.connect(context.destination);
-  
-  analyser.fftSize = 32;
-  dataArray = new Uint8Array(analyser.frequencyBinCount);
+    but0();  
+  } else {
+    alert("WebAudio not supported in your browser.")
+  }
 
-  but0();  
   }
 );
 
@@ -266,7 +274,7 @@ function but1() {
       .scale(1.1, 0.6), -0.5, 2, () => (time * 1) % 2) )
   .out()
 
-  solid().out(o1)
+  // solid().out(o1)
 
   voronoi(() => mouse.x/24 * .5, () => midFreq*3+90,0)
   .mult(osc(3,() => midFreq * 3 + 1.1, () => Math.sin(time/15)*.3+.08).saturate(4).kaleid(200) )
