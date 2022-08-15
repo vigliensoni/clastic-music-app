@@ -262,6 +262,8 @@ function but1() {
   trackdefaultColor();
   t1.style.color = "red";
 
+  s1.initImage("media/img/blank.png")
+
   video.src = "./videos/1-E01-crf22.mp4"
   video.playsInline = true
   video.play().then( () => s0.init({src:video, dynamic:true}))
