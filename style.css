@@ -274,7 +274,7 @@ padding-bottom: 0px;
 
 
 a:link { 
-    text-decoration: underline;
+  /* text-decoration: underline; */
   color: blanchedalmond; 
   font-weight: normal;
 }
