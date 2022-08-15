@@ -26,8 +26,12 @@ let hiFreq;
 // Play
 const playButton = document.getElementById('audio');
 
-playButton.addEventListener('mouseover', () => { playButton.style.textDecoration = "line-through"; })
-playButton.addEventListener('mouseleave', () => { playButton.style.textDecoration = "underline"; })
+playButton.addEventListener('mouseover', () => { 
+  playButton.style.color = "#B19A74"; 
+})
+playButton.addEventListener('mouseleave', () => { 
+  playButton.style.color = ""; 
+})
 
 playButton.addEventListener('click', () => {
   // Full screen, add title, and footer
