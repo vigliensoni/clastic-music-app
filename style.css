@@ -156,23 +156,73 @@ font-family:/* monospace */'Syne', sans-serif;
     width: 80%; /* Could be more or less, depending on screen size */
     text-align: center;
   }
-  
-.cover img{
-   margin-left: auto;
-   margin-right: auto;
-   text-align: center; 
+
+
+
+
+.cover {
+
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center; 
   max-width: 50%;
-   
 }
 
-/* @media only screen and (max-width: 600px) {
   .cover img {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center; 
-    width: 250px;
+    display: block;
   }
-} */
+
+
+    .cover.main img {
+      width: 100%;
+    }
+
+  @media screen and (max-width: 736px) {
+
+    .cover.fit {
+      margin: 2rem 0;
+    }
+
+    .cover.main {
+      margin: 2rem 0;
+    }
+
+  }
+
+div.cover {
+  overflow: hidden;
+}
+
+div.cover img {
+    -moz-transition: -moz-transform 1.5s ease-out;
+    -webkit-transition: -webkit-transform 1.5s ease-out;
+    -ms-transition: -ms-transform 1.5s ease-out;
+    transition: transform 1.5s ease-out;
+  }
+
+  div.cover:hover img {
+    -moz-transform: scale(0.95, 0.95);
+    -webkit-transform: scale(0.95, 0.95);
+    -ms-transform: scale(0.95, 0.95);
+    transform: scale(0.95, 0.95);
+
+    -webkit-transition: transform 1.05s ease-in-out;
+    -moz-transition:transform 1.05s ease-in-out;
+    -ms-transition:transform 1.05s ease-in-out;
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
